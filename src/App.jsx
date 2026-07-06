@@ -259,8 +259,15 @@ function Hand(){
           },5000)
       return
     }
-     if (whatsApp.trim().length !== 11 || payNo.trim().length < 6 || !whatsApp.trim().startsWith("01") || !payNo.trim().startsWith("01") || isNaN(payNo) || isNaN(whatsApp) ) {
+     if (whatsApp.trim().length !== 11 || !whatsApp.trim().startsWith("01") || !payNo.trim().startsWith("01") || isNaN(payNo) || isNaN(whatsApp) ) {
           setError("Please enter a valid number")
+          setTimeout(() =>{
+             setError("")
+          },5000)
+          return
+     }
+     if(payNo.trim().length < 6){
+       setError("Transaction ID")
           setTimeout(() =>{
              setError("")
           },5000)
