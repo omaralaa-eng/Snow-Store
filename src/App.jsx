@@ -503,7 +503,7 @@ function Back(){
    {buy &&
        <main className="main">
          <section className='sec3'>
-            <img src="public/Qrcode.jpg" alt="Qr code" />
+            <img src="/Qrcode.jpg" alt="Qr code" />
             {!next &&
             <form>
               <h1>If you paied click next</h1>
