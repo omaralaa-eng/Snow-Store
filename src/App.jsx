@@ -57,48 +57,48 @@ function App() {
     { id: 1,
       name: 'Resident Evil 4',
       price: 19.99,
-      image: 'public/resident-evil-4-2880x2160-10442.jpeg',
+      image: 'https://wallpapercave.com/wp/wp12116720.jpg',
       bought: false,
       wishlist: false,
     },
     { id: 2,
       name: 'FC26',
       price: 29.99,
-      image: 'public/fc26.jpg',
+      image: 'https://wallpapercave.com/wp/wp15596323.jpg',
       bought: false,
       wishlist: false
      },
     { id: 3,
        name: 'God of War',
        price: 39.99,
-       image: 'public/god-of-war-kratos-and-atreus-at-river-nahx1u4rudbu55hy.jpg',
+       image: 'https://wallpaperaccess.com/full/707061.jpg',
        bought: false,
        wishlist: false
       },
     { id: 4,
        name: 'Uncharted 4',
         price: 49.99,
-         image: 'public/Uncharted 4.jpg',
+         image: 'https://wallpaperaccess.com/full/40632.jpg',
           bought: false,
           wishlist: false },
     { id: 5,
        name: 'GTA V',
         price: 59.99,
-         image: 'public/grand-theft-auto-v-2880x1800-10738.jpg',
+         image: 'https://4kwallpapers.com/images/wallpapers/grand-theft-auto-v-2880x1800-10738.jpg',
           bought: false,
           wishlist: false
         },
     { id: 6,
        name: 'Assassin\'s Creed Valhalla',
         price: 69.99,
-         image: 'public/Assassins.jpg',
+         image: 'https://wallpaperaccess.com/full/2702188.jpg',
           bought: false,
           wishlist: false
         },
     { id: 7,
        name: 'The Last of Us',
         price: 79.99,
-         image: 'public/The Last of Us.png',
+         image: 'https://wallpapercave.com/wp/wp6448323.png',
           bought: false,
           wishlist: false
         },
@@ -240,7 +240,7 @@ const [games3,setGames3] = useState()
   }
 
 useEffect(() => {
-  const storedGames = localStorage.getItem("saved");
+  const storedGames = localStorage.getItem("saved1");
 
   if (storedGames) {
     setGames(JSON.parse(storedGames));
@@ -291,7 +291,7 @@ function Hand(){
       });
       setGames(updatedGames);
       setGames2(updatedGames);
-      localStorage.setItem("saved", JSON.stringify(updatedGames));
+      localStorage.setItem("saved1", JSON.stringify(updatedGames));
 
       setSent(true)
       setBuy(false)
@@ -371,7 +371,7 @@ function Back(){
                         });
                         setGames(updatedGames);
                         setGames2(updatedGames);
-                        localStorage.setItem("saved",JSON.stringify(updatedGames))
+                        localStorage.setItem("saved1",JSON.stringify(updatedGames))
                       }}>
                         {game.wishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
                       </button>
@@ -409,7 +409,7 @@ function Back(){
                         });
                         setGames2(updatedGames);
                         setGames(updatedGames);
-                        localStorage.setItem("saved",JSON.stringify(updatedGames))
+                        localStorage.setItem("saved1",JSON.stringify(updatedGames))
                       }}>
                         {game.wishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
                       </button>
@@ -467,7 +467,7 @@ function Back(){
                               });
                               setGames(updatedGames);
                               setGames2(updatedGames);
-                              localStorage.setItem("saved",JSON.stringify(updatedGames))
+                              localStorage.setItem("saved1",JSON.stringify(updatedGames))
                             }}>
                               Remove from Wishlist
                             </button>
