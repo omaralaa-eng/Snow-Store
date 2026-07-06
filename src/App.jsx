@@ -351,11 +351,11 @@ function Back(){
           {none && <div className='nav' style={{opacity:"0"}}></div>}
         <nav className={none ?"scrolled":"nav"} ref={NavRef}>
          
-            <div className={selected === 0 ? 'selected' : 'divNav'} onClick={() => {setSelected(0)}}><a>Home</a></div>
-            <div className={selected === 1 ? 'selected' : 'divNav'} onClick={() => {setSelected(1)}}><a >Search</a></div>
-            <div className={selected === 2 ? 'selected' : 'divNav'} onClick={() => {setSelected(2)}}><a >Cart</a></div>
-            <div className={selected === 3 ? 'selected' : 'divNav'} onClick={() => {setSelected(3)}}><a >Wishlist</a></div>
-            <div className={selected === 4 ? 'selected' : 'divNav'} onClick={() => {setSelected(4)}}><a >To Pay</a></div>
+            <div className={selected === 0 ? 'selected' : 'divNav'} onClick={() => {setSelected(0);setNone(false)}}><a>Home</a></div>
+            <div className={selected === 1 ? 'selected' : 'divNav'} onClick={() => {setSelected(1);setNone(false)}}><a >Search</a></div>
+            <div className={selected === 2 ? 'selected' : 'divNav'} onClick={() => {setSelected(2);setNone(false)}}><a >Cart</a></div>
+            <div className={selected === 3 ? 'selected' : 'divNav'} onClick={() => {setSelected(3);setNone(false)}}><a >Wishlist</a></div>
+            <div className={selected === 4 ? 'selected' : 'divNav'} onClick={() => {setSelected(4);setNone(false)}}><a >To Pay</a></div>
           
         </nav>
         {selected === 0 && <>
