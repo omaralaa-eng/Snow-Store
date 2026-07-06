@@ -259,7 +259,7 @@ function Hand(){
           },5000)
       return
     }
-     if (whatsApp.trim().length !== 11 || !whatsApp.trim().startsWith("01") || !payNo.trim().startsWith("01") || isNaN(payNo) || isNaN(whatsApp) ) {
+     if (whatsApp.trim().length !== 11 || !whatsApp.trim().startsWith("01") || isNaN(payNo) || isNaN(whatsApp) ) {
           setError("Please enter a valid number")
           setTimeout(() =>{
              setError("")
