@@ -18,14 +18,17 @@ function App() {
   const [error,setError] = useState()
   const [gamePrice,setGamePrice] = useState()
   const [next,setNext] = useState(false)
+  const [none,setNone] = useState(false)
   const scroll = useRef({})
   useEffect(() => {
     const handleScroll = () => {
       if(selected === 0){
       if (window.scrollY > 370) {
-        NavRef.current.classList.add('scrolled');
+        // NavRef.current.classList.add('scrolled');
+        setNone(true)
       } else {
-        NavRef.current.classList.remove('scrolled');
+        // NavRef.current.classList.remove('scrolled');
+        setNone(false)
       }
     }
     else{
@@ -89,7 +92,7 @@ function App() {
           wishlist: false
         },
     { id: 6,
-       name: 'Assassin\'s Creed Valhalla',
+       name: 'Assassins Creed Valhalla',
         price: 69.99,
          image: 'https://wallpaperaccess.com/full/2702188.jpg',
           bought: false,
@@ -340,8 +343,8 @@ function Back(){
 
          </div>
        </header>
-
-        <nav className="nav" ref={NavRef}>
+          {none && <div className='nav' style={{opacity:"0"}}></div>}
+        <nav className={none ?"scrolled":"nav"} ref={NavRef}>
          
             <div className={selected === 0 ? 'selected' : 'divNav'} onClick={() => {setSelected(0)}}><a>Home</a></div>
             <div className={selected === 1 ? 'selected' : 'divNav'} onClick={() => {setSelected(1)}}><a >Search</a></div>
@@ -373,7 +376,7 @@ function Back(){
                         setGames2(updatedGames);
                         localStorage.setItem("saved1",JSON.stringify(updatedGames))
                       }}>
-                        {game.wishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
+                        {game.wishlist ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}
                       </button>
                     </div>
                   ))}
@@ -411,7 +414,7 @@ function Back(){
                         setGames(updatedGames);
                         localStorage.setItem("saved1",JSON.stringify(updatedGames))
                       }}>
-                        {game.wishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
+                        {game.wishlist ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}
                       </button>
                     </div>
                   ))}</>}
@@ -469,7 +472,7 @@ function Back(){
                               setGames2(updatedGames);
                               localStorage.setItem("saved1",JSON.stringify(updatedGames))
                             }}>
-                              Remove from Wishlist
+                             <i class="fa-solid fa-heart"></i>
                             </button>
                           </div>
                         ))

@@ -274,11 +274,23 @@ body::selection{
 }
 .scrolled{
   position: fixed;
-  top: 2px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
   transition: all .3s ease-in-out;
+  width: 40%;
+  height: 50px;
+  background-color: #F8FBF8;
+  display: flex;
+  border-radius: 50px;
+  transition: all .3s ease-in-out;
+   a{
+    text-decoration: none;
+    color: var(--color2);
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
 }
 /*  */
 
@@ -481,6 +493,13 @@ body::selection{
         font-size: 15px;
       }
     }
+    .scrolled{
+       width: 95%;
+      max-width: 500px;
+      a{
+        font-size: 15px;
+      }
+    }
     #sort-icon{
       display: none;
     }
@@ -532,6 +551,32 @@ body::selection{
       scale: .9;
       right: 0;
     }
+    .game{
+      width: 48%;
+      max-width: 320px;
+      gap: 5px;
+      margin: 10px 4px;
+      h3{
+          font-size: 1.4rem;
+          white-space: nowrap;
+          scrollbar-width: none;
+          animation: none;
+          width: 100%;
+          overflow-x: auto;
+      }
+      h3::-webkit-scrollbar{
+        display: none;
+      }
+    }
+    .btnWishlist{
+      right: 0;
+    }
+}
+@media (max-width:399px){
+  .game{
+    min-width: 70%;
+    max-width: 320px;
+  }
 }
 @media (min-width:1101px) and (max-width:1245px){
   .flex div{
