@@ -24,15 +24,13 @@ function App() {
     const handleScroll = () => {
       if(selected === 0){
       if (window.scrollY > 370) {
-        // NavRef.current.classList.add('scrolled');
         setNone(true)
       } else {
-        // NavRef.current.classList.remove('scrolled');
         setNone(false)
       }
     }
     else{
-      NavRef.current.classList.remove('scrolled');
+     setNone(false)
     }
     };
 
@@ -59,69 +57,69 @@ function App() {
   const [games,setGames] = useState([
     { id: 1,
       name: 'Resident Evil 4',
-      price: 19.99,
+      price: 550,
       image: 'https://wallpapercave.com/wp/wp12116720.jpg',
       bought: false,
       wishlist: false,
     },
     { id: 2,
       name: 'FC26',
-      price: 29.99,
+      price: 750,
       image: 'https://wallpapercave.com/wp/wp15596323.jpg',
       bought: false,
       wishlist: false
      },
     { id: 3,
        name: 'God of War',
-       price: 39.99,
+       price: 1000,
        image: 'https://wallpaperaccess.com/full/707061.jpg',
        bought: false,
        wishlist: false
       },
     { id: 4,
        name: 'Uncharted 4',
-        price: 49.99,
+        price: 900,
          image: 'https://wallpaperaccess.com/full/40632.jpg',
           bought: false,
           wishlist: false },
     { id: 5,
        name: 'GTA V',
-        price: 59.99,
+        price: 750,
          image: 'https://4kwallpapers.com/images/wallpapers/grand-theft-auto-v-2880x1800-10738.jpg',
           bought: false,
           wishlist: false
         },
     { id: 6,
        name: 'Assassins Creed Valhalla',
-        price: 69.99,
+        price: 750,
          image: 'https://wallpaperaccess.com/full/2702188.jpg',
           bought: false,
           wishlist: false
         },
     { id: 7,
        name: 'The Last of Us',
-        price: 79.99,
+        price: 1500,
          image: 'https://wallpapercave.com/wp/wp6448323.png',
           bought: false,
           wishlist: false
         },
   {   id: 8,
       name: 'Horizon Zero Dawn',
-      price: 89.99,
+      price: 1500,
       image: 'https://getwallpapers.com/wallpaper/full/3/f/7/789279-new-horizon-zero-dawn-wallpapers-3840x2160-smartphone.jpg',
       bought: false,
       wishlist: false
      },
     { id: 9,
        name: 'Forza Horizon 5',
-       price: 99.99,
+       price: 1500,
         image: 'https://wallpaperaccess.com/full/6070334.jpg',
         bought: false,
         wishlist: false
       },
     { id: 10,
        name: 'Cyberpunk 2077',
-       price: 109.99,
+       price: 900,
        image: 'https://wallpaperaccess.com/full/1096894.jpg',
        bought: false,
        wishlist: false
@@ -129,7 +127,7 @@ function App() {
       {
         id: 11,
         name: 'Elden Ring',
-        price: 119.99,
+        price: 2000,
         image: 'https://4kwallpapers.com/images/wallpapers/elden-ring-pc-games-playstation-4-playstation-5-xbox-one-1920x1080-7712.jpg',
         bought: false,
         wishlist: false
@@ -137,7 +135,7 @@ function App() {
       {
         id: 12,
         name: 'Red Dead Redemption 2',
-        price: 129.99,
+        price: 750,
         image: 'https://wallpapercave.com/wp/wp3660596.jpg',
         bought: false,
         wishlist: false
@@ -145,7 +143,7 @@ function App() {
       {
         id: 13,
         name: 'Black Myth: Wukong',
-        price: 149.99,
+        price: 2250,
         image: 'https://4kwallpapers.com/images/wallpapers/black-myth-wukong-3840x2160-17948.jpeg',
         bought: false,
         wishlist: false,
@@ -153,7 +151,7 @@ function App() {
       {
         id: 14,
         name: 'Ready or Not',
-        price: 149.99,
+        price: 1300,
         image: 'https://www.senses.se/wp-content/uploads/2025/10/ready-or-not-finish-cl-250331.jpg',
         bought: false,
         wishlist: false,
@@ -161,7 +159,7 @@ function App() {
        {
         id: 15,
         name: 'Clair Obscur: Expedition 33',
-        price: 149.99,
+        price: 1800,
         image: 'https://image.api.playstation.com/vulcan/ap/rnd/202412/1011/2f394381118d051422d9d8da9e9ea7f9bc300c6b746483c6.jpg',
         bought: false,
         wishlist: false,
@@ -169,7 +167,7 @@ function App() {
        {
         id: 16,
         name: 'Marvels Spider-Man Remastered',
-        price: 149.99,
+        price: 1000,
         image: 'https://wallpapercave.com/wp/wp7593605.jpg',
         bought: false,
         wishlist: false,
@@ -177,7 +175,7 @@ function App() {
        {
         id: 17,
         name: "Call of Duty: Modern Warfare II",
-        price: 370,
+        price: 1800,
         image: "https://tse3.mm.bing.net/th/id/OIP.NXILAogM1nnMSkI-1ennKwHaEK?pid=Api&h=220&P=0",
         bought: false,
         wishlist: false,
@@ -185,7 +183,7 @@ function App() {
       {
         id: 18,
         name: "Assassin's Creed Mirage",
-        price: 650,
+        price: 750,
         image: "https://wallpapercave.com/wp/wp11468139.jpg",
         bought: false,
         wishlist: false,
@@ -193,7 +191,7 @@ function App() {
       {
         id: 19,
         name: "Tom Clancy's Rainbow Six Siege",
-        price: 540,
+        price: 500,
         image: "https://wallpapercave.com/wp/wp3830478.jpg",
         bought: false,
         wishlist: false,
@@ -201,7 +199,7 @@ function App() {
       {
         id: 20,
         name: "ARC Raiders",
-        price: 1350,
+        price: 1600,
         image: "https://4kwallpapers.com/images/wallpapers/arc-raiders-key-art-2560x1440-19855.jpg",
         bought: false,
         wishlist: false,
@@ -209,7 +207,7 @@ function App() {
       {
         id: 21,
         name: "UNCHARTED: Legacy of Thieves Collection",
-        price: 730,
+        price: 850,
         image: "https://wallpapercave.com/wp/wp10511331.jpg",
         bought: false,
         wishlist: false,
@@ -217,7 +215,7 @@ function App() {
       {
         id: 22,
         name: "DOOM: The Dark Ages",
-        price: 1080,
+        price: 2200,
         image: "https://4kwallpapers.com/images/wallpapers/doom-the-dark-ages-3840x2160-20800.jpg",
         bought: false,
         wishlist: false,
@@ -225,7 +223,7 @@ function App() {
       {
         id: 23,
         name: "DETROIT",
-        price: 250,
+        price: 700,
         image: "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/09/detroit-become-human.jpg",
         bought: false,
         wishlist: false,
@@ -243,7 +241,7 @@ const [games3,setGames3] = useState()
   }
 
 useEffect(() => {
-  const storedGames = localStorage.getItem("saved1");
+  const storedGames = localStorage.getItem("saved2");
 
   if (storedGames) {
     setGames(JSON.parse(storedGames));
@@ -301,7 +299,7 @@ function Hand(){
       });
       setGames(updatedGames);
       setGames2(updatedGames);
-      localStorage.setItem("saved1", JSON.stringify(updatedGames));
+      localStorage.setItem("saved2", JSON.stringify(updatedGames));
 
       setSent(true)
       setBuy(false)
@@ -366,7 +364,7 @@ function Back(){
                     <div className="game" key={game.id}>
                       <img src={game.image} alt={game.name} />
                       <h3 className={game.name.length > 23 ? "scroll" : ""}>{game.name}</h3>
-                      <p className={game.name.length > 23 ?"pLength":""}>{game.price.toFixed(2)} EGP</p>
+                      <p className={game.name.length > 23 ?"pLength":""}>{game.price} EGP</p>
                       {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price)}>Buy again</button>}
                       <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price)}>
                         {game.bought ? 'Bought' : 'Buy'}
@@ -381,7 +379,7 @@ function Back(){
                         });
                         setGames(updatedGames);
                         setGames2(updatedGames);
-                        localStorage.setItem("saved1",JSON.stringify(updatedGames))
+                        localStorage.setItem("saved2",JSON.stringify(updatedGames))
                       }}>
                         {game.wishlist ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}
                       </button>
@@ -403,7 +401,7 @@ function Back(){
                     <div className="game" key={game.id}>
                       <img src={game.image} alt={game.name} />
                       <h3 className={game.name.length > 23  ? "scroll" : ""}>{game.name}</h3>
-                      <p className={game.name.length > 23  ?"pLength":""}>{game.price.toFixed(2)} EGP</p>
+                      <p className={game.name.length > 23  ?"pLength":""}>{game.price} EGP</p>
 
                       {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price)}>Buy again</button>}
                       <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price)}>
@@ -419,7 +417,7 @@ function Back(){
                         });
                         setGames2(updatedGames);
                         setGames(updatedGames);
-                        localStorage.setItem("saved1",JSON.stringify(updatedGames))
+                        localStorage.setItem("saved2",JSON.stringify(updatedGames))
                       }}>
                         {game.wishlist ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}
                       </button>
@@ -439,7 +437,7 @@ function Back(){
                           <div className="game" key={game.id}>
                             <img src={game.image} alt={game.name} />
                             <h3 className={game.name.length > 23  ? "scroll" : ""}>{game.name}</h3>
-                            <p className={game.name.length > 23  ?"pLength":""}>{game.price.toFixed(2)} EGP</p>
+                            <p className={game.name.length > 23  ?"pLength":""}>{game.price} EGP</p>
 
 
                             <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought}>
@@ -460,7 +458,7 @@ function Back(){
                           <div className="game" key={game.id}>
                             <img src={game.image} alt={game.name} />
                             <h3 className={game.name.length > 23  ? "scroll" : ""}>{game.name}</h3>
-                            <p className={game.name.length > 23  ?"pLength":""}>{game.price.toFixed(2)} EGP</p>
+                            <p className={game.name.length > 23  ?"pLength":""}>{game.price} EGP</p>
 
                             {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price)}>Buy again</button>}
 
@@ -477,7 +475,7 @@ function Back(){
                               });
                               setGames(updatedGames);
                               setGames2(updatedGames);
-                              localStorage.setItem("saved1",JSON.stringify(updatedGames))
+                              localStorage.setItem("saved2",JSON.stringify(updatedGames))
                             }}>
                              <i class="fa-solid fa-heart"></i>
                             </button>

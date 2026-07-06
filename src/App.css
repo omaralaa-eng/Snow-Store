@@ -45,7 +45,6 @@ body::selection{
 .header{
   width: 100%;
   height: max-content;
-  /* background-color: #3e4cb8; */
   background: linear-gradient(90deg, #3e4cb8 0%, #16C7D9 100%);
   position: relative;
   overflow: hidden;
@@ -457,7 +456,7 @@ body::selection{
 .message,.messageErr{
   animation: tran2 .5s ease-out;
 }
-@media (min-width:250px) and (max-width:1100px){
+@media  (max-width:1100px){
   .header{
         height: max-content;
         h1{
@@ -552,8 +551,8 @@ body::selection{
       right: 0;
     }
     .game{
-      width: 48%;
-      max-width: 320px;
+      width: 47%;
+      max-width: 300px;
       gap: 5px;
       margin: 10px 4px;
       h3{
@@ -571,12 +570,6 @@ body::selection{
     .btnWishlist{
       right: 0;
     }
-}
-@media (max-width:399px){
-  .game{
-    min-width: 70%;
-    max-width: 320px;
-  }
 }
 @media (min-width:1101px) and (max-width:1245px){
   .flex div{
