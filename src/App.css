@@ -1,0 +1,554 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+@keyframes textSlide {
+ to {
+    background-position: -200px;
+  }
+}
+@keyframes tran1{
+  from{opacity: 0;translate: -150px 0;}
+  to{opacity: 1;translate: 0 0;}
+}
+@keyframes tran2{
+  from{translate: 0 -50%;}
+  to{translate: 0 0;}
+}
+@keyframes tran3{
+  0%{transform: translateX(0);}
+  10%{transform: translateX(0);}
+  45%{transform: translateX(calc(-100% + 320px));}
+  55%{transform: translateX(calc(-100% + 320px));}
+  100%{transform: translateX(0);}
+  
+}
+:root{
+  --color1: white;
+  --color2: black;
+  --font1: "Inter", sans-serif;
+}
+body::selection{
+  background-color: #16C7D9;
+  color: var(--color1);
+}
+.main{
+  width: 100dvw;
+  min-height: 100vh;
+  font-family: var(--font1);
+  color: var(--color1);
+   background:  #111322;
+}
+.header{
+  width: 100%;
+  height: max-content;
+  /* background-color: #3e4cb8; */
+  background: linear-gradient(90deg, #3e4cb8 0%, #16C7D9 100%);
+  position: relative;
+  overflow: hidden;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  padding: 20px 0
+}
+.header h1{
+  font-size: 3rem;
+  padding: 15px 0 0 15px;
+  font-style: italic;
+  background-image: url("background.jpg");
+  background-size: cover;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 2px 2px 4px rgba(247, 244, 244, 0.858);
+  animation: textSlide 10s linear infinite;
+}
+.header h3{
+  font-size: 1.8rem;
+  padding: 10px 0 0 35px;
+}
+.header p{
+  font-size: 18px;
+  padding: 10px 0 0 50px;
+}
+.header p::before{
+  content: "-";
+  color: grey;
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em;
+  font-size: 1rem;
+  margin-left: -1em;
+}
+.header ul{
+  padding: 10px 0 0 70px;
+  height: max-content;
+  list-style-position: inside;
+  li{
+    padding-top: 5px;
+    font-size: 1.2rem;
+    i{
+      overflow: hidden;
+    }
+  }
+}
+.header span{
+  font-weight: 600;
+}
+.flex{
+  display: flex;
+  width: 100%
+}
+.flex div{
+  position: relative;
+  left: 50px;
+  margin-top: 10px;
+}
+.aboutPayment{
+  position: relative;
+  left: 200px !important;
+}
+.jour{
+   position: absolute;
+    bottom: 40px;
+     left: 70px;
+     font-size: 2.2rem;
+}
+/*  */
+
+.nav{
+  width: 40%;
+  height: 50px;
+  margin: auto;
+  background-color: #F8FBF8;
+  display: flex;
+  border-radius: 50px;
+  margin-top: 20px;
+  transition: all .3s ease-in-out;
+   a{
+    text-decoration: none;
+    color: var(--color2);
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}
+.divNav{
+  width: calc(100% / 5);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.selected{
+  background-color: #16C7D9;
+  color: var(--color1);
+   width: calc(100% / 5);
+   height: 100%;
+   border-radius: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+}
+
+/*  */
+
+.sec{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+.game{
+  width: 320px;
+  height: 300px;
+  margin: 20px;
+  border-radius: 20px;
+  background-color: #3e4cb8;
+  position: relative;
+  gap: 10px;
+  white-space: nowrap;
+  img{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 0;
+    opacity: .8;
+  }
+  h3,p{
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    color: var(--color1);
+    background-color: rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(247, 244, 244, 0.918);
+  }
+  h3{
+    font-size: 1.7rem;
+    padding: 10px 0 0 10px;
+  }
+  p{
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 600;
+    padding: 10px 0 0 10px;
+  }
+  button{
+    font-size: 1.1rem;
+    transition: all .3s ease-in-out;
+    font-weight: 600;
+  }
+
+}
+.pLength{
+  font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 600;
+    padding: 10px 0 0 10px;
+    position: relative;
+    bottom: 0.13px;
+}
+.scroll{
+   font-size: 1.7rem;
+   padding: 10px 0 0 10px;
+   width: fit-content;
+   display: block;
+   animation: tran3 5s linear infinite;
+   .game p{
+    position: relative;
+    bottom: 5px;
+   }
+}
+.game:hover{
+  box-shadow: 0px 0px 20px 5px #16C7D9;
+  transform: translateY(-5px);
+}
+.btnBuy{
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #16C7D9;
+  color: var(--color1);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.bought{
+  background-color: rgba(255, 255, 255, 0.66);
+  color: #1c4e2f;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  scale: 1.12;
+  box-shadow: 2px 2px 4px 2px rgba(247, 244, 244, 0.918);
+  z-index: 7;
+}
+.btnWishlist{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: #16C7D9;
+  color: var(--color1);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.btnBuy:hover,.btnWishlist:hover{
+  background-color: transparent;
+  color: #F8FBF8;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(247, 244, 244, 0.918);
+  border: 3px dashed #16C7D9;
+}
+.scrolled{
+  position: fixed;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  transition: all .3s ease-in-out;
+}
+/*  */
+
+.sec2{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+     overflow: hidden;
+  }
+}
+.search-input{
+  width: 50%;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  padding: 0 20px;
+  font-size: 1.2rem;
+  margin-left: 50px;
+}
+#search-icon{
+  position: relative;
+  right: 60px;
+  font-size: 1.3rem;
+  background-color: #16C7D9;
+  padding: 15px;
+  border-radius: 50%;
+  scale: .8;
+  cursor: pointer;
+}
+#sort-icon{
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  top: 15px;
+}
+.About{
+  width: 100%;
+  padding: 20px;
+}
+.About h1{
+  font-size: 2rem;
+  padding: 10px 0 0 20px;
+}
+.About ol{
+  padding: 10px 0 0 40px;
+  list-style-position: inside;
+  li{
+    font-size: 1.2rem;
+    padding: 10px 0;
+  }
+}
+/*  */
+
+.sec3{
+  width: 100%;
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 50px;
+    position: absolute;
+    right: 50%;
+    transform: translateX(55%);
+    top: 10px;
+    padding: 10px;
+    input{
+      width: 500px;
+      height: 50px;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+       font-weight: 600;
+       transition: .2s;
+    }
+    button{
+      width: 150px;
+      height: 40px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 17px;
+      cursor: pointer;
+      font-weight: 600;
+      background: linear-gradient(90deg, #3e4cb8 0%, #16C7D9 100%);
+      color: #F8FBF8;
+      transition: 0.2s;
+    }
+  }
+  img{
+    width: 400px;
+    height: 400px;
+    margin-top: 50px;
+  }
+  i{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    background-color: rgb(251, 7, 7);
+    padding: 15px;
+    border-radius: 50%;
+    scale: .8;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+}
+.sec3 i:hover{
+  background-color: rgb(171, 11, 11);
+}
+.sec3 input:focus{
+  border: 3.5px solid #16C7D9;
+  box-shadow: 0px 0px 10px 2px #16C7D9;
+}
+.sec3 button:hover{
+    box-shadow: 0px 0px 10px 4px #3e4cb8;
+}
+.Gamename{
+  position: relative;
+  bottom: 15px;
+  opacity: 0;
+}
+.g1{
+  animation: tran1 1s forwards ease-in-out;
+}
+.g2{
+  animation: tran1 1.5s 1s forwards ease-in-out;
+}
+.message{
+  width: 40%;
+  height: max-content;
+  padding: 10px;
+  color: #F8FBF8;
+  background-color: #23d916;
+  border-radius: 20px;
+  position: fixed;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: .2s;
+  z-index: 999;
+}
+.messageErr{
+  width: 40%;
+  height: max-content;
+  padding: 10px;
+  color: #F8FBF8;
+  background-color: #e41111;
+  border-radius: 20px;
+  position: fixed;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: .2s;
+  z-index: 999;
+}
+.message,.messageErr{
+  animation: tran2 .5s ease-out;
+}
+@media (min-width:250px) and (max-width:1100px){
+  .header{
+        height: max-content;
+        h1{
+          font-size: 2.5rem;
+          padding: 0;
+          text-align: center;
+        }
+        h3{
+          font-size: 1.5rem;
+          padding: 5px 0 0 15px;
+        }
+      }
+      .flex{
+         display: flex;
+      flex-direction: column;
+      gap: 20px;
+      }
+  .flex div{
+    position: relative;
+      left: 0;
+    }
+    .aboutPayment{
+      position: relative;
+      left: 0 !important;
+    }
+    .jour{
+      display: none;
+    }
+    .nav{
+      width: 95%;
+      max-width: 500px;
+      a{
+        font-size: 15px;
+      }
+    }
+    #sort-icon{
+      display: none;
+    }
+    #search-icon{
+      right: 50px;
+    }
+    .search-input{
+      width: 100%;
+    }
+    .sec3{
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      overflow: hidden;
+      padding-bottom: 40px;
+      img{
+        width: 300px;
+        height: 300px;
+      }
+      form{
+        position: relative;
+        input{
+          width: 80%;
+          position: relative;
+           left: 50%;
+           transform: translateX(-50%);
+        }
+        button{
+          position: relative;
+           left: 50%;
+           transform: translateX(-50%);
+        }
+        h1{
+          font-size: 1.6rem;
+        }
+      }
+      i{
+        right: 1px;
+        scale: .6;
+      }
+    }
+    .message,.messageErr{
+      width: 90%;
+      border-radius: 5px;
+      h2{font-size: 15px;}
+      p{font-size: 12px;}
+    }
+    .bought{
+      scale: .9;
+      right: 0;
+    }
+}
+@media (min-width:1101px) and (max-width:1245px){
+  .flex div{
+    left: 10px;
+  }
+  .aboutPayment{
+    position: relative;
+    left: 100px !important;
+  }
+  .sec3 form{
+    position: absolute;
+    right: 100px;
+    transform: translateX(0px);
+  }
+}
+@media (min-width:1246px) and (max-width:1500px){
+  .sec3 form{
+    transform: translateX(70%);
+  }
+}
