@@ -19,11 +19,12 @@ function App() {
   const [gamePrice,setGamePrice] = useState()
   const [next,setNext] = useState(false)
   const [none,setNone] = useState(false)
+  const [loading,setLoading] = useState(false)
   const scroll = useRef({})
   useEffect(() => {
     const handleScroll = () => {
-      if(selected === 0){
-      if (window.scrollY > 370) {
+      if(selected === 0 || selected === 4){
+      if (window.scrollY > 270) {
         setNone(true)
       } else {
         setNone(false)
@@ -277,7 +278,7 @@ function Hand(){
              setError("")
           },5000)
           return
-     }
+     }setLoading(true)
     emailjs.send(
       "service_iutzono",
       "template_i28ez5q",
@@ -302,12 +303,15 @@ function Hand(){
       localStorage.setItem("saved2", JSON.stringify(updatedGames));
 
       setSent(true)
+      setLoading(false)
       setBuy(false)
+      setNext(false)
       setTimeout(()=>{
         setSent(false)
       },5000)
     }).catch((err) => {
       console.error(err)
+      setLoading(false)
       setError("Something went wrong, try again")
       setTimeout(() =>{
              setError("")
@@ -325,39 +329,31 @@ function Back(){
     
        <header className='header' id='home'>
          <h1>Snow Store</h1>
-
-         <div className="flex">
-          <div className="">
-         <h3>Welcome to Snow Store!</h3>
-         <p>Snow Store offers you with the best Steam games at competitive prices.</p>
-         <p>Find a wide variety of games for all your gaming needs.</p>
-  
-        </div>
-        <h3 className='jour'>Start your gaming journey!</h3>
-
-         <div className="aboutPayment">
-         <h3>About payment method:</h3>
-         <p>We accept InstaPay and Vodafon cash.</p>
-         <p><span>And we provide:</span></p>
-         <ul>
-           <li>Secure & Privacy <i class="fa-solid fa-lock" style={{ color: 'gray'}}></i></li>
-           <li>Fast & Reliable <i class="fa-solid fa-bolt-lightning" style={{ color: 'yellow', paddingLeft: '17px' }}></i></li>
-           <li>Instant Response <i class="fa-regular fa-comment-dots" style={{ color: 'lightblue' }}></i></li>
-         </ul>
-        </div>
-
+         <div className="">
+         <p>Steam games & Steam gift cards</p>
          </div>
+          <img src="https://www.pngmart.com/files/15/Egypt-Flag-Download-PNG-Image.png" alt="Egypt logo" />
+       
        </header>
           {none && <div className='nav' style={{opacity:"0"}}></div>}
-        <nav className={none ?"scrolled":"nav"} ref={NavRef}>
-         
-            <div className={selected === 0 ? 'selected' : 'divNav'} onClick={() => {setSelected(0);setNone(false)}}><a>Home</a></div>
-            <div className={selected === 1 ? 'selected' : 'divNav'} onClick={() => {setSelected(1);setNone(false)}}><a >Search</a></div>
-            <div className={selected === 2 ? 'selected' : 'divNav'} onClick={() => {setSelected(2);setNone(false)}}><a >Cart</a></div>
-            <div className={selected === 3 ? 'selected' : 'divNav'} onClick={() => {setSelected(3);setNone(false)}}><a >Wishlist</a></div>
-            <div className={selected === 4 ? 'selected' : 'divNav'} onClick={() => {setSelected(4);setNone(false)}}><a >To Pay</a></div>
-          
-        </nav>
+          <nav className={none ?"scrolled":"nav"} ref={NavRef}>
+       { selected < 4 &&<>
+        
+            <div className={selected === 0 ? 'selected' : 'divNav'} onClick={() => {setSelected(0);setNone(false)}}><a ><i class="fa-solid fa-house"></i></a></div>
+            <div className={selected === 1 ? 'selected' : 'divNav'} onClick={() => {setSelected(1);setNone(false)}}><a ><i class="fa-solid fa-magnifying-glass"></i></a></div>
+            <div className={selected === 2 ? 'selected' : 'divNav'} onClick={() => {setSelected(2);setNone(false)}}><a ><i class="fa-solid fa-cart-shopping"></i></a></div>
+            <div className={selected === 3 ? 'selected' : 'divNav'} onClick={() => {setSelected(3);setNone(false)}}><a ><i class="fa-solid fa-heart"></i></a></div>
+            <div className='divNav' onClick={() => {setSelected(4);if(window.scrollY > 270){setNone(true)}else{setNone(false)}}}><a ><i class="fa-solid fa-plus"></i></a></div>
+       </>}
+
+        {selected >= 4 && <>
+            <div className={selected === 4 ? 'selected' : 'divNav2'} onClick={() => {setSelected(4);setNone(false)}}><p >All games</p></div>
+            <div className={selected === 5 ? 'selected' : 'divNav2'} onClick={() => {setSelected(5);setNone(false)}}><p >Steam gift cards</p></div>
+            <div className={selected === 6 ? 'selected' : 'divNav2'} onClick={() => {setSelected(6);setNone(false)}}><p >Support</p></div>
+            <div className={selected === 7 ? 'selected' : 'divNav2'} onClick={() => {setSelected(7);setNone(false)}}><p >To pay</p></div>
+            <div className='divNav' onClick={() => {setSelected(0);if(window.scrollY > 270){setNone(true)}else{setNone(false)}}}><a > <i class="fa-solid fa-arrow-left"></i></a></div>
+        </> } </nav> 
+       
         {selected === 0 && <>
             <section className="sec">
                   {games.map((game) => (
@@ -485,7 +481,52 @@ function Back(){
                   </section>
                   </>}
 
-                  {selected === 4 && <>
+                   {selected === 4 && <>
+            <section className="sec">
+                  {games.map((game) => (
+                    <div className="game" key={game.id}>
+                      <img src={game.image} alt={game.name} />
+                      <h3 className={game.name.length > 23 ? "scroll" : ""}>{game.name}</h3>
+                      <p className={game.name.length > 23 ?"pLength":""}>{game.price} EGP</p>
+                      {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price)}>Buy again</button>}
+                      <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price)}>
+                        {game.bought ? 'Bought' : 'Buy'}
+                      </button>
+                      <button className="btnWishlist" onClick={() => {
+                        const updatedGames = games.map((g) => {
+                          if (g.id === game.id) {
+                            return { ...g, wishlist: !g.wishlist };
+                          }
+                          return g;
+                          
+                        });
+                        setGames(updatedGames);
+                        setGames2(updatedGames);
+                        localStorage.setItem("saved2",JSON.stringify(updatedGames))
+                      }}>
+                        {game.wishlist ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}
+                      </button>
+                    </div>
+                  ))}
+            </section> </>}
+
+            {selected === 5 && <section className='sec'>
+                <h1>comming soon..</h1>
+              </section>}
+
+              {selected === 6 && <><h1 className='contact'>You can contact us through:</h1><section className='sec4'>
+                <div className="game2"  onClick={() => window.open("https://www.facebook.com/share/1CohKdH2wc/")}>
+                  <i class="fa-brands fa-facebook-f" style={{color:"blue"}}></i>
+                </div>
+                <div className="game2" onClick={() => window.open("https://www.instagram.com/__ommaarr.a__? igsh=a2JIODNzdXFqZmk3")} id='instaD'>
+                   <i class="fa-brands fa-instagram" id='insta'></i>
+                </div>
+                <div className="game2" id='grid3' onClick={() => window.open("https://wa.me/qr/AUKSFTDUYHWFD1")}>
+                    <i class="fa-brands fa-whatsapp" style={{color:"rgb(14, 218, 14)",fontSize:"100px"}}></i>
+                </div>
+                </section></>}
+
+                  {selected === 7 && <>
                   <section className="About">
                     <h1>Payment method:</h1>
                     <ol>
@@ -493,9 +534,9 @@ function Back(){
                       <li>A QR code will appear to Pay with InstaPay or Vodafon cash.</li>
                       <li>After paying click next.</li>
                       <li>Fill the form that appears and submit it.</li>
-                      <li>After submitting the form, you will receive our message in your email and what's app.</li>
-                      <li>We will process your order and send you the game in your Steam account when it's finished.</li>
-                      <li>You can track your order status at any time on What's App.</li>
+                      <li className='li1'>After submitting the form, you will receive our message in your email and what's app.</li>
+                      <li className='li1'>We will process your order and send you the game in your Steam account when it's finished.</li>
+                      <li className='li1'>You can track your order status at any time on What's App.</li>
                     </ol>
                   </section>
                   </>}
@@ -527,9 +568,8 @@ function Back(){
                        <input type="text" placeholder='Steam Password'  value={steamPass} onChange={(e) => setSteamPass(e.target.value)}/>
                        <input type="text" placeholder='Whats App'  value={whatsApp} onChange={(e) => setWhatsApp(e.target.value)} />
                        <input type="text" placeholder='Transaction ID (رقم عملية الشراء)' value={payNo} onChange={(e) => setPayNo(e.target.value)} />
-                       <button type='button' onClick={Hand}>Submit</button>
-                    </form>}
-                    
+                       <button type='button' onClick={Hand}>{loading?"...":"Submit"}</button>
+                     </form>}
                     <i class="fa-solid fa-arrow-left" onClick={Back}></i>
          </section>
               {error && (
