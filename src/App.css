@@ -2,22 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
   overflow-x: hidden;
-}
-::-webkit-scrollbar{
-  width: 6px;
-}
-::-webkit-scrollbar-thumb{
-  background-color: #218ea4;
-  border-radius: 10px;
-}
-::-webkit-scrollbar-track{
-  background-color: #1b1b1b;
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover{
-  background-color: #00b8dd;
+   scroll-behavior: smooth;
 }
 @keyframes textSlide {
  to {
@@ -38,16 +24,35 @@
   45%{transform: translateX(calc(-100% + 320px));}
   55%{transform: translateX(calc(-100% + 320px));}
   100%{transform: translateX(0);}
-  
+}
+@keyframes tran4{
+  0%{transform: translateX(0);}
+  10%{transform: translateX(0);}
+  45%{transform: translateX(calc(-100% + 250px));}
+  55%{transform: translateX(calc(-100% + 250px));}
+  100%{transform: translateX(0);}
 }
 @keyframes nav{
   from{opacity: 0;translate: 15px 0;}
   to{opacity: 1;translate: 0px 0;}
 }
+::-webkit-scrollbar{
+  width: 6px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #00d9ff;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-track{
+  background-color: #0d1424;
+}
 :root{
   --color1: white;
   --color2: black;
   --font1: "Inter", sans-serif;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: #13b2ce;
 }
 body::selection{
   background-color: #16C7D9;
@@ -102,7 +107,270 @@ body::selection{
 }
 
 /*  */
+.container{
+  width: 90%;
+  height: 400px;
+  display: flex;
+  border-radius: 20px;
+  position: relative;
+  margin: auto;
+   overflow: hidden;
+  margin-top: 20px;
+}
+.special{
+  width: 100%;
+  flex-shrink: 0;
+  cursor: pointer;
+   overflow: hidden;
+  img{
+   width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    position: absolute;
+    z-index: 0;
+    overflow: hidden;
+    transition: .2s;
+  }
+   h1{
+    position: relative;
+    left: 20px;
+    top: 25px;
+    text-shadow: 2px 2px 5px white;
+    font-size: 2.3rem;
+    z-index: 2;
+  }
+}
+.special:hover{
+  img{
+    scale: 1.02;
+  }
+}
+.scrollI{
+  position: absolute;
+  left: 50%;
+  translate: -50% -45px;
+}
+.circle{
+    width: 20px;
+    height: 20px;
+    color: var(--color1);
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #ebf0f0b4;
+    display: inline-block;
+    margin: 2px;
+}
+.circle2{
+   width: 20px;
+    height: 20px;
+    color: var(--color1);
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #16C7D9;
+    display: inline-block;
+    margin: 2px;
+}
+.welcome{
+  text-align: center;
+  padding: 25px 0 ;
+  i{
+    overflow: hidden;
+  }
+}
+hr{
+  width: 30%;
+  margin: 20px auto;
+  border-color: #16C7D9;
+}
+.service{
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  div{
+    width: 400px;
+    height: 220px;
+    background-image: url("https://wallpaperaccess.com/full/4892311.jpg");
+    background-size: cover;
+    margin: 0 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 28px;
+    transition: .2s;
+     background-position: center;
+    p{
+       background-color: rgba(0, 0, 0, 0.5);
+       padding: 15px 5px;
+    }
+  }
+}
+.giftCard{
+   background-image: url("https://prod-cs-gft-static.s3.amazonaws.com/wp-content/uploads/2022/08/18014604/20-steam-gift-card.jpg") !important;
+}
+.service div:hover{
+   box-shadow: 0px 0px 20px 5px #16C7D9;
+  transform: translateY(-5px);
+}
+.mainGames{
+  width: 95%;
+  display: grid;
+  margin: 20px auto;
+  grid-template-columns: repeat(9,280px);
+  grid-template-rows: repeat(2,320px);
+  grid-auto-flow: column;
+  position: relative;
+  background-color: #f8fbf82b;
+  border-radius: 15px;
+  padding: 15px;
+}
+#next{
+  position: relative;
+  bottom: 400px;
+  right: 50px;
+  z-index: 5;
+  padding: 20px;
+  border-radius: 50%;
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+ background-color: rgba(134, 131, 131, 0.5);
+ transition: .2s;
+}
+#back{
+  position: relative;
+  bottom: 395px;
+  left: 50px;
+  z-index: 5;
+  padding: 20px;
+  border-radius: 50%;
+  float: left;
+  font-size: 1.5rem;
+  cursor: pointer;
+ background-color: rgba(134, 131, 131, 0.5);
+ transition: .2s;
+}
+#next:hover,#back:hover{
+  background-color: #16C7D9;
+}
+.paymentMethod{
+    width: 500px;
+    max-width: 100%;
+    height: 220px;
+    margin:15px auto;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 28px;
+    transition: .2s;
+    cursor: pointer;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/039/203/700/non_2x/payment-with-smartphone-icon-made-with-currency-symbols-online-mobile-payment-nfc-near-field-communication-contactless-payment-background-with-dollar-euro-yen-pound-icons-illustration-vector.jpg");
+    background-size: cover;
+    p{
+       background-color: rgba(0, 0, 0, 0.5);
+       padding: 15px 10px;
+    }
+}
+.paymentMethod:hover{
+  box-shadow: 0px 0px 20px 5px #16C7D9;
+  transform: translateY(-5px);
+}
+.footer {
+  background: #0d1424;
+  color: #cfd8e3;
+  padding: 50px 40px 20px;
+  border-top: 1px solid rgba(0, 217, 255, 0.15);
+  font-family: inherit;
+  margin-top: 50px;
+}
 
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 180px;
+}
+
+.footer-logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.footer-logo span {
+  color: #00d9ff;
+}
+
+.footer-col.brand p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #8a94a6;
+}
+
+.footer-col h4 {
+  color: #00d9ff;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.footer-col ul li a {
+  color: #cfd8e3;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #00d9ff;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-socials a {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 217, 255, 0.1);
+  color: #00d9ff;
+  transition: all 0.2s ease;
+}
+
+.footer-socials a:hover {
+  background: #00d9ff;
+  color: #0d1424;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 13px;
+  color: #6b7688;
+}
+/*  */
 .nav{
   width: 40%;
   height: 50px;
@@ -164,7 +432,7 @@ body::selection{
 }
 .scrolled{
   position: fixed;
-  top: 10px;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
@@ -240,6 +508,7 @@ body::selection{
   gap: 10px;
   white-space: nowrap;
   animation: nav 1s;
+  transition: .2s;
   img{
     width: 100%;
     height: 100%;
@@ -294,7 +563,7 @@ body::selection{
 }
 #insta{
    background:linear-gradient( 135deg, #833ab4, #fd1d1d, #fcb045);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 #instaD:hover{
@@ -319,9 +588,23 @@ body::selection{
     bottom: 5px;
    }
 }
+.scroll2{
+    font-size: 1.7rem;
+   padding: 10px 0 0 10px;
+   width: fit-content;
+   display: block;
+   animation: tran4 4s linear infinite;
+   .game p{
+    position: relative;
+    bottom: 5px;
+   }
+}
 .game:hover{
   box-shadow: 0px 0px 20px 5px #16C7D9;
   transform: translateY(-5px);
+  .btnBuy{
+    display: block;
+  }
 }
 .btnBuy{
   position: absolute;
@@ -334,6 +617,7 @@ body::selection{
   border: none;
   outline: none;
   cursor: pointer;
+  display: none;
 }
 .bought{
   background-color: rgba(255, 255, 255, 0.66);
@@ -487,7 +771,8 @@ body::selection{
     height: 400px;
     margin-top: 50px;
   }
-  i{
+}
+ #BackI{
     position: fixed;
     top: 20px;
     right: 20px;
@@ -499,8 +784,7 @@ body::selection{
     cursor: pointer;
     transition: 0.2s;
   }
-}
-.sec3 i:hover{
+#BackI:hover{
   background-color: rgb(171, 11, 11);
 }
 .sec3 input:focus{
@@ -510,10 +794,74 @@ body::selection{
 .sec3 button:hover{
     box-shadow: 0px 0px 10px 4px #3e4cb8;
 }
+.buyPage{
+  img{
+    border-radius: 20px;
+    margin-left: 15px;
+    width: 500px;
+  }
+}
+ .btnNext{
+    position: absolute;
+    bottom: 80px;
+    right: 30px;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: 600;
+    background: linear-gradient(90deg, #3e4cb8 0%, #16C7D9 100%);
+    color: #F8FBF8;
+    transition: 0.2s;
+  }
 .Gamename{
-  position: relative;
-  bottom: 15px;
+  position: absolute;
+  top: 50px;
+  left: 40%;
   opacity: 0;
+}
+.Gamename2{
+  position: absolute;
+  top: 110px;
+  left: 40%;
+  opacity: 0;
+}
+.Gamename span{
+  font-style: italic;
+  background-image: url("background.jpg");
+  background-size: cover;
+  background-clip: text;
+  color: transparent;
+  animation: textSlide 10s linear infinite;
+}
+.Gamename,.Gamename2{
+  span{
+    font-size: 40px;
+    font-style: italic;
+  }
+}
+.btnWishlist2{   
+    position: absolute;
+    bottom: 80px;
+    left: 30px;
+    padding: 30px;
+    scale: .8;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    background-color: #00d9ff;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+    color: white;
+    font-size: 30px;
+    i{
+      overflow: hidden;
+    }
 }
 .g1{
   animation: tran1 1s forwards ease-in-out;
@@ -698,6 +1046,59 @@ body::selection{
     }
     .About{
       padding: 0;
+    }
+    .container{
+      width: 100%;
+    }
+    .special{
+      h1{
+        font-size: 1.8rem;
+        left: 10px;
+      }
+    }
+    .service{
+      gap: 10px;
+      flex-direction: column;
+      align-items: center;
+      div{
+        margin: 0;
+        width: 80%;
+        background-position: center;
+        max-width: 500px;
+      }
+    }
+    .mainGames{
+      width: 100%;
+      padding: 10px 5px;
+      grid-template-columns: repeat(9,200px);
+      div{
+        width: 190px !important;
+      }
+    }
+    #next{
+      right: 5px;
+      scale: .8;
+    }
+    #back{
+      left: 5px;
+       scale: .8;
+    }
+    .Gamename{
+      top: 45%;
+      left: 30px;
+      padding-top: 10px;
+    }
+    .Gamename2{
+      top: 50%;
+      padding-top: 65px;
+      left: 30px;
+    }
+    .btnWishlist2{
+      bottom: 65px;
+      left: 10px;
+      padding: 15px;
+      scale: 1;
+      font-size: 1.8rem;
     }
 }
 @media (min-width:1101px) and (max-width:1245px){

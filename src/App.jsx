@@ -6,6 +6,9 @@ function App() {
   const [selected, setSelected] = useState(0)
   const [buy,setBuy] = useState(false)
   const [gameName,setGameName] = useState("")
+  const [gamePrice,setGamePrice] = useState()
+  const [gameImage,setGameImage] = useState("")
+  const [gameWish,setGameWish] = useState(false)
   const [searchValue, setSearchValue] = useState("");
   const NavRef = useRef(null)
   const serchInputRef = useRef(null);
@@ -16,10 +19,12 @@ function App() {
   const [payNo,setPayNo] = useState("")
   const [Sent,setSent] = useState(false)
   const [error,setError] = useState()
-  const [gamePrice,setGamePrice] = useState()
-  const [next,setNext] = useState(false)
+  const [next,setNext] = useState(0)
   const [none,setNone] = useState(false)
   const [loading,setLoading] = useState(false)
+  const specialRef = useRef(null)
+  const mainGames = useRef(null)
+  const [circle,setCircle] = useState(1)
   const scroll = useRef({})
   useEffect(() => {
     const handleScroll = () => {
@@ -48,13 +53,21 @@ function App() {
   },[buy])
 
 
-  function goToBuy(name,price){
+  function goToBuy(name,price,image,wish){
     scroll.current[buy] = window.scrollY;
     setGameName(name);
     setGamePrice(price);
+    setGameImage(image)
+    setGameWish(wish)
     setBuy(true);
   }
 
+function Next(){
+  mainGames.current.scrollLeft += 400;
+}
+function Back1(){
+  mainGames.current.scrollLeft -= 400;
+}
   const [games,setGames] = useState([
     { id: 1,
       name: 'Resident Evil 4',
@@ -62,68 +75,89 @@ function App() {
       image: 'https://wallpapercave.com/wp/wp12116720.jpg',
       bought: false,
       wishlist: false,
+      special: true,
+      recommed: true,
     },
     { id: 2,
       name: 'FC26',
       price: 750,
       image: 'https://wallpapercave.com/wp/wp15596323.jpg',
       bought: false,
-      wishlist: false
+      wishlist: false,
+      special: false,
+      recommed: true,
      },
     { id: 3,
        name: 'God of War',
        price: 1000,
        image: 'https://wallpaperaccess.com/full/707061.jpg',
        bought: false,
-       wishlist: false
+       wishlist: false,
+      special: false,
+      recommed: true,
       },
     { id: 4,
-       name: 'Uncharted 4',
-        price: 900,
-         image: 'https://wallpaperaccess.com/full/40632.jpg',
-          bought: false,
-          wishlist: false },
+      name: 'Uncharted 4',
+      price: 900,
+      image: 'https://wallpaperaccess.com/full/40632.jpg',
+      bought: false,
+      wishlist: false,
+      special: true,
+      recommed: true, 
+     },
     { id: 5,
-       name: 'GTA V',
-        price: 750,
-         image: 'https://4kwallpapers.com/images/wallpapers/grand-theft-auto-v-2880x1800-10738.jpg',
-          bought: false,
-          wishlist: false
+      name: 'GTA V',
+      price: 750,
+      image: 'https://4kwallpapers.com/images/wallpapers/grand-theft-auto-v-2880x1800-10738.jpg',
+      bought: false,
+      wishlist: false,
+      special: false,
+      recommed: false, 
         },
     { id: 6,
        name: 'Assassins Creed Valhalla',
-        price: 750,
-         image: 'https://wallpaperaccess.com/full/2702188.jpg',
-          bought: false,
-          wishlist: false
+      price: 750,
+      image: 'https://wallpaperaccess.com/full/2702188.jpg',
+      bought: false,
+      wishlist: false,
+      special: false,
+      recommed: true, 
         },
     { id: 7,
        name: 'The Last of Us',
-        price: 1500,
-         image: 'https://wallpapercave.com/wp/wp6448323.png',
-          bought: false,
-          wishlist: false
+      price: 1500,
+      image: 'https://wallpapercave.com/wp/wp6448323.png',
+      bought: false,
+      wishlist: false,
+      special: true,
+      recommed: true, 
         },
   {   id: 8,
       name: 'Horizon Zero Dawn',
       price: 1500,
       image: 'https://getwallpapers.com/wallpaper/full/3/f/7/789279-new-horizon-zero-dawn-wallpapers-3840x2160-smartphone.jpg',
       bought: false,
-      wishlist: false
+      wishlist: false,
+      special: false,
+      recommed: true, 
      },
     { id: 9,
        name: 'Forza Horizon 5',
        price: 1500,
-        image: 'https://wallpaperaccess.com/full/6070334.jpg',
-        bought: false,
-        wishlist: false
+      image: 'https://wallpaperaccess.com/full/6070334.jpg',
+      bought: false,
+      wishlist: false,
+      special: false,
+      recommed: true, 
       },
     { id: 10,
        name: 'Cyberpunk 2077',
        price: 900,
        image: 'https://wallpaperaccess.com/full/1096894.jpg',
        bought: false,
-       wishlist: false
+       wishlist: false,
+       special: false,
+       recommed: true, 
       },
       {
         id: 11,
@@ -131,7 +165,9 @@ function App() {
         price: 2000,
         image: 'https://4kwallpapers.com/images/wallpapers/elden-ring-pc-games-playstation-4-playstation-5-xbox-one-1920x1080-7712.jpg',
         bought: false,
-        wishlist: false
+        wishlist: false,
+        special: true,
+        recommed: true, 
       },
       {
         id: 12,
@@ -139,7 +175,9 @@ function App() {
         price: 750,
         image: 'https://wallpapercave.com/wp/wp3660596.jpg',
         bought: false,
-        wishlist: false
+        wishlist: false,
+        special: true,
+        recommed: true, 
       },
       {
         id: 13,
@@ -148,6 +186,8 @@ function App() {
         image: 'https://4kwallpapers.com/images/wallpapers/black-myth-wukong-3840x2160-17948.jpeg',
         bought: false,
         wishlist: false,
+        special: false,
+        recommed: false, 
       },
       {
         id: 14,
@@ -156,6 +196,8 @@ function App() {
         image: 'https://www.senses.se/wp-content/uploads/2025/10/ready-or-not-finish-cl-250331.jpg',
         bought: false,
         wishlist: false,
+        special: false,
+        recommed: true, 
       },
        {
         id: 15,
@@ -164,6 +206,8 @@ function App() {
         image: 'https://image.api.playstation.com/vulcan/ap/rnd/202412/1011/2f394381118d051422d9d8da9e9ea7f9bc300c6b746483c6.jpg',
         bought: false,
         wishlist: false,
+        special: false,
+        recommed: false, 
       },
        {
         id: 16,
@@ -172,6 +216,8 @@ function App() {
         image: 'https://wallpapercave.com/wp/wp7593605.jpg',
         bought: false,
         wishlist: false,
+        special: false,
+        recommed: true, 
       },
        {
         id: 17,
@@ -180,6 +226,8 @@ function App() {
         image: "https://tse3.mm.bing.net/th/id/OIP.NXILAogM1nnMSkI-1ennKwHaEK?pid=Api&h=220&P=0",
         bought: false,
         wishlist: false,
+        special: false,
+        recommed: true, 
       },
       {
         id: 18,
@@ -188,6 +236,8 @@ function App() {
         image: "https://wallpapercave.com/wp/wp11468139.jpg",
         bought: false,
         wishlist: false,
+        special: false,
+        recommed: true, 
       },
       {
         id: 19,
@@ -196,6 +246,8 @@ function App() {
         image: "https://wallpapercave.com/wp/wp3830478.jpg",
         bought: false,
         wishlist: false,
+        special: false,
+        recommed: true, 
       },
       {
         id: 20,
@@ -204,6 +256,8 @@ function App() {
         image: "https://4kwallpapers.com/images/wallpapers/arc-raiders-key-art-2560x1440-19855.jpg",
         bought: false,
         wishlist: false,
+        special: false,
+        recommed: false, 
       },
       {
         id: 21,
@@ -212,6 +266,8 @@ function App() {
         image: "https://wallpapercave.com/wp/wp10511331.jpg",
         bought: false,
         wishlist: false,
+        special: false,
+        recommed: true, 
       },
       {
         id: 22,
@@ -220,6 +276,8 @@ function App() {
         image: "https://4kwallpapers.com/images/wallpapers/doom-the-dark-ages-3840x2160-20800.jpg",
         bought: false,
         wishlist: false,
+        special: false,
+        recommed: false, 
       },
       {
         id: 23,
@@ -228,6 +286,8 @@ function App() {
         image: "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/09/detroit-become-human.jpg",
         bought: false,
         wishlist: false,
+        special: false,
+        recommed: true, 
       }
   ] )
 const [games2,setGames2] = useState(games)
@@ -241,21 +301,54 @@ const [games3,setGames3] = useState()
     setGames2(filteredGames);
   }
 
-useEffect(() => {
-  const storedGames = localStorage.getItem("saved2");
+// useEffect(() => {
+//   const storedGames = localStorage.getItem("saved2");
 
-  if (storedGames) {
-    setGames(JSON.parse(storedGames));
-    setGames2(JSON.parse(storedGames));
-  }
-}, []);
+//   if (storedGames) {
+//     setGames(JSON.parse(storedGames));
+//     setGames2(JSON.parse(storedGames));
+//   }
+// }, []);
+
+useEffect(() =>{
+  const interval = setInterval(() =>{
+        const el = specialRef.current;
+
+        if(el.scrollLeft + el.clientWidth >= el.scrollWidth -1){
+          el.scrollLeft = 0
+        }else{
+          el.scrollLeft += el.clientWidth;
+        }
+
+   },5000)
+
+
+  return () => clearInterval(interval);
+},[])
+
+useEffect(() => {
+  const el = specialRef.current;
+   if(!el || buy) return;
+  const handleScroll = () => {
+   
+    const index = Math.round(el.scrollLeft / el.clientWidth);
+    setCircle(index + 1);
+   
+  };
+
+  el.addEventListener("scroll", handleScroll);
+
+  return () => {
+    el.removeEventListener("scroll", handleScroll);
+  };
+},[selected,buy]);
 
 function Hand(){
   if (!email || !steamPass || !steamUser || !whatsApp || !payNo) {
       setError("Please fill all fields")
       setTimeout(() =>{
              setError("")
-          },5000)
+          },3000)
       return
     }
      if (whatsApp.trim().length !== 11 || !whatsApp.trim().startsWith("01") || isNaN(whatsApp) ) {
@@ -305,7 +398,7 @@ function Hand(){
       setSent(true)
       setLoading(false)
       setBuy(false)
-      setNext(false)
+      setNext(0)
       setTimeout(()=>{
         setSent(false)
       },5000)
@@ -320,7 +413,7 @@ function Hand(){
 }
 function Back(){
   setBuy(false)
-  setNext(false)
+  setNext(0)
 }
   return (
     <>
@@ -335,7 +428,7 @@ function Back(){
           <img src="https://www.pngmart.com/files/15/Egypt-Flag-Download-PNG-Image.png" alt="Egypt logo" />
        
        </header>
-          {none && <div className='nav' style={{opacity:"0"}}></div>}
+          {none && <div className='nav' style={{opacity:"0",marginTop:"15px"}}></div>}
           <nav className={none ?"scrolled":"nav"} ref={NavRef}>
        { selected < 4 &&<>
         
@@ -355,17 +448,54 @@ function Back(){
         </> } </nav> 
        
         {selected === 0 && <>
-            <section className="sec">
-                  {games.map((game) => (
-                    <div className="game" key={game.id}>
+            <section className="scrollDiv">
+              <div className="container" ref={specialRef}>
+                  {games.filter((g)=> g.special === true).map((game)=>(<>
+                    <div className='special' key={game.id} onClick={() => goToBuy(game.name,game.price,game.image,game.wishlist)}>
+
                       <img src={game.image} alt={game.name} />
-                      <h3 className={game.name.length > 23 ? "scroll" : ""}>{game.name}</h3>
-                      <p className={game.name.length > 23 ?"pLength":""}>{game.price} EGP</p>
-                      {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price)}>Buy again</button>}
-                      <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price)}>
+                      <h1>{game.name}</h1>
+                  </div>
+                 </> ))}
+                  </div>
+
+                  <div className="scrollI">
+               <div className={circle === 1 ? "circle2" :"circle"} onClick={() => {specialRef.current.scrollLeft = 0 }}></div>
+               <div className={circle === 2? "circle2" :"circle"}  onClick={() => {specialRef.current.scrollLeft = specialRef.current.clientWidth}}></div> 
+               <div className={circle === 3? "circle2" :"circle"}  onClick={() => {specialRef.current.scrollLeft = specialRef.current.clientWidth * 2 }}></div>
+               <div className={circle === 4? "circle2" :"circle"}  onClick={() => {specialRef.current.scrollLeft = specialRef.current.clientWidth * 3 }}></div>
+               <div className={circle === 5? "circle2" :"circle"}  onClick={() => {specialRef.current.scrollLeft = specialRef.current.clientWidth * 4 }}></div>
+                 </div>
+
+                 <h1 className='welcome'>Welcome to Snow Store <i class="fa-brands fa-steam-symbol"></i></h1>
+                 <hr />
+
+                 <h1  className='welcome'>What we offer :</h1>
+                 <div className="service">
+
+                   <div className="" onClick={() => setSelected(4)}><p>Steam games</p></div>
+                   <div className="giftCard" onClick={() => setSelected(5)}><p>Steam gift cards</p></div>
+
+                 </div>
+                       
+                  <hr style={{margin:"80px auto"}}/>
+                  <h1>Recommneded Games:</h1>
+                  <div className='mainGames' ref={mainGames}>
+                   {games.filter((g) => g.recommed).map((game) => (
+
+                     <div className="game" style={{width:"250px",margin:"0"}} key={game.id} onClick={() => goToBuy(game.name,game.price,game.image,game.wishlist)}>
+                      <img src={game.image} alt={game.name} />
+                      <h3 className={game.name.length > 18  ? "scroll2" : ""} >{game.name}</h3>
+                      <p className={game.name.length > 18  ?"pLength":""}>{game.price} EGP</p>
+
+                      {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>}
+                     
+                      <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>
                         {game.bought ? 'Bought' : 'Buy'}
                       </button>
-                      <button className="btnWishlist" onClick={() => {
+
+                      <button className="btnWishlist" onClick={(e) => {
+                        e.stopPropagation()
                         const updatedGames = games.map((g) => {
                           if (g.id === game.id) {
                             return { ...g, wishlist: !g.wishlist };
@@ -373,14 +503,61 @@ function Back(){
                           return g;
                           
                         });
-                        setGames(updatedGames);
                         setGames2(updatedGames);
+                        setGames(updatedGames);
                         localStorage.setItem("saved2",JSON.stringify(updatedGames))
-                      }}>
+                      }
+                      }>
                         {game.wishlist ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}
                       </button>
                     </div>
-                  ))}
+                    
+                   ))} </div>
+                  <i class="fa-solid fa-angle-right" id='next' onClick={Next}></i>  <i class="fa-solid fa-angle-left" id='back' onClick={Back1}></i>
+                  <hr style={{margin:"80px auto"}}/>
+
+                  <h1 className='welcome'>How to pay:</h1>
+                   <div className="paymentMethod" onClick={() => setSelected(7)}><p>Payment method</p></div>
+
+                   <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-col brand">
+          <h2 className="footer-logo">Snow<span>Store</span></h2>
+          <p>Your trusted store for Steam games at the best prices and fastest delivery.</p>
+        </div>
+
+        <div className="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li onClick={() => setSelected(0)}><a>Home</a></li>
+            <li onClick={() => setSelected(4)}><a>Games</a></li>
+            <li onClick={() => setSelected(3)}><a>Wishlist</a></li>
+            <li onClick={() => setSelected(2)}><a href="#">Cart</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li onClick={() => setSelected(7)}><a>Payment Methods</a></li>
+            <li onClick={() => setSelected(6)}><a>Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div className="footer-col">
+          <h4>Follow Us</h4>
+          <div className="footer-socials">
+            <a href="https://www.facebook.com/share/1CohKdH2wc/" target='_blank'><i className="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/__ommaarr.a__? igsh=a2JIODNzdXFqZmk3" target='_blank'><i className="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/qr/AUKSFTDUYHWFD1" target="_blank"><i className="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <p>© {new Date().getFullYear()} Snow Store. All rights reserved.</p>
+      </div>
+    </footer>
             </section> </>}
 
 
@@ -394,16 +571,17 @@ function Back(){
                     <section className="sec">
                       {searchValue === "" ? <p className="search-p">Please enter a game name to search.</p> : <>
                      {games2.map((game) => (
-                    <div className="game" key={game.id}>
+                    <div className="game" key={game.id} onClick={() => goToBuy(game.name,game.price,game.image,game.wishlist)}>
                       <img src={game.image} alt={game.name} />
                       <h3 className={game.name.length > 23  ? "scroll" : ""}>{game.name}</h3>
                       <p className={game.name.length > 23  ?"pLength":""}>{game.price} EGP</p>
 
-                      {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price)}>Buy again</button>}
-                      <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price)}>
+                      {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>}
+                      <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>
                         {game.bought ? 'Bought' : 'Buy'}
                       </button>
-                      <button className="btnWishlist" onClick={() => {
+                      <button className="btnWishlist" onClick={(e) => {
+                          e.stopPropagation()
                         const updatedGames = games.map((g) => {
                           if (g.id === game.id) {
                             return { ...g, wishlist: !g.wishlist };
@@ -430,7 +608,7 @@ function Back(){
                         <p className="search-p">Your cart is empty.</p>
                       ) : (
                         games.filter((game) => game.bought).map((game) => (
-                          <div className="game" key={game.id}>
+                          <div className="game" key={game.id} >
                             <img src={game.image} alt={game.name} />
                             <h3 className={game.name.length > 23  ? "scroll" : ""}>{game.name}</h3>
                             <p className={game.name.length > 23  ?"pLength":""}>{game.price} EGP</p>
@@ -451,18 +629,19 @@ function Back(){
                         <p className="search-p">Your wishlist is empty.</p>
                       ) : (
                         games.filter((game) => game.wishlist).map((game) => (
-                          <div className="game" key={game.id}>
+                          <div className="game" key={game.id} onClick={() => goToBuy(game.name,game.price,game.image,game.wishlist)}>
                             <img src={game.image} alt={game.name} />
                             <h3 className={game.name.length > 23  ? "scroll" : ""}>{game.name}</h3>
                             <p className={game.name.length > 23  ?"pLength":""}>{game.price} EGP</p>
 
-                            {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price)}>Buy again</button>}
+                            {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>}
 
-                             <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price)}>
+                             <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>
                                 {game.bought ? 'Bought' : 'Buy'}
                               </button>
 
-                            <button className="btnWishlist" onClick={() => {
+                            <button className="btnWishlist" onClick={(e) => {
+                                e.stopPropagation()
                               const updatedGames = games.map((g) => {
                                 if (g.id === game.id) {
                                   return { ...g, wishlist: !g.wishlist };
@@ -484,15 +663,16 @@ function Back(){
                    {selected === 4 && <>
             <section className="sec">
                   {games.map((game) => (
-                    <div className="game" key={game.id}>
+                    <div className="game" key={game.id} onClick={() => goToBuy(game.name,game.price,game.image,game.wishlist)}>
                       <img src={game.image} alt={game.name} />
                       <h3 className={game.name.length > 23 ? "scroll" : ""}>{game.name}</h3>
                       <p className={game.name.length > 23 ?"pLength":""}>{game.price} EGP</p>
-                      {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price)}>Buy again</button>}
-                      <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price)}>
+                      {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>}
+                      <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>
                         {game.bought ? 'Bought' : 'Buy'}
                       </button>
-                      <button className="btnWishlist" onClick={() => {
+                      <button className="btnWishlist" onClick={(e) => {
+                          e.stopPropagation()
                         const updatedGames = games.map((g) => {
                           if (g.id === game.id) {
                             return { ...g, wishlist: !g.wishlist };
@@ -552,16 +732,44 @@ function Back(){
    {buy &&
        <main className="main">
          <section className='sec3'>
-            <img src="/Qrcode.jpg" alt="Qr code" />
-            {!next &&
+           
+          {next === 0 && <>
+            <div className="buyPage">
+              <img src={gameImage} alt={gameName} />
+                <h1 className='Gamename g1' > <span>{gameName}</span></h1>
+                <h1 className='Gamename2 g2' > <span> {gamePrice} EGP</span></h1>
+                <button type='button' onClick={() => setNext(prev => prev += 1)} className='btnNext'>Next</button>
+
+                  <button  className="btnWishlist2" onClick={(e) => {
+                        e.stopPropagation()
+                        const updatedGames = games.map((g) => {
+                          if (g.name === gameName) {
+                            return { ...g, wishlist: !g.wishlist };
+                          }
+                          return g;
+                        });
+              
+                        setGames2(updatedGames);
+                        setGames(updatedGames);
+                        setGameWish(!gameWish)
+                        localStorage.setItem("saved2",JSON.stringify(updatedGames))
+                        
+                 }}>{gameWish ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}</button>
+                 
+            </div>
+          </>}
+
+
+
+
+            {next === 1 &&<>
+             <img src="/Qrcode.jpg" alt="Qr code" />
             <form>
               <h1>If you paied click next</h1>
-              <button type='button' onClick={() => setNext(true)}>Next</button>
-              </form>}
-              {next &&
+              <button type='button' onClick={() => setNext(prev => prev += 1)}>Next</button>
+              </form></>}
+              {next === 2 &&
                     <form>
-                      <h1 className='Gamename g1' >Game name: {gameName}</h1>
-                      <h1 className='Gamename g2' >Game price: {gamePrice} EGP</h1>
                       <h1>Please fill the form</h1>
                        <input type="Email" placeholder='Personal Email'  value={email} onChange={(e) => setEmail(e.target.value)} />
                        <input type="text" placeholder='Steam User Name' value={steamUser} onChange={(e) => setSteamUser(e.target.value)} />
@@ -570,13 +778,15 @@ function Back(){
                        <input type="text" placeholder='Transaction ID (رقم عملية الشراء)' value={payNo} onChange={(e) => setPayNo(e.target.value)} />
                        <button type='button' onClick={Hand}>{loading?"...":"Submit"}</button>
                      </form>}
-                    <i class="fa-solid fa-arrow-left" onClick={Back}></i>
+                    <i class="fa-solid fa-arrow-left" onClick={Back} id='BackI'></i>
+                     
          </section>
               {error && (
                       <div className='messageErr'>
                         <h2>{error}.</h2>
                       </div>
                     )}
+                  
        </main>}
     </>
   )
