@@ -301,14 +301,14 @@ const [games3,setGames3] = useState()
     setGames2(filteredGames);
   }
 
-// useEffect(() => {
-//   const storedGames = localStorage.getItem("saved2");
+useEffect(() => {
+  const storedGames = localStorage.getItem("saved3");
 
-//   if (storedGames) {
-//     setGames(JSON.parse(storedGames));
-//     setGames2(JSON.parse(storedGames));
-//   }
-// }, []);
+  if (storedGames) {
+    setGames(JSON.parse(storedGames));
+    setGames2(JSON.parse(storedGames));
+  }
+}, []);
 
 useEffect(() =>{
   const interval = setInterval(() =>{
@@ -393,7 +393,7 @@ function Hand(){
       });
       setGames(updatedGames);
       setGames2(updatedGames);
-      localStorage.setItem("saved2", JSON.stringify(updatedGames));
+      localStorage.setItem("saved3", JSON.stringify(updatedGames));
 
       setSent(true)
       setLoading(false)
@@ -428,7 +428,7 @@ function Back(){
           <img src="https://www.pngmart.com/files/15/Egypt-Flag-Download-PNG-Image.png" alt="Egypt logo" />
        
        </header>
-          {none && <div className='nav' style={{opacity:"0",marginTop:"15px"}}></div>}
+          {none && <div className='nav' style={{opacity:"0",marginTop:"30px"}}></div>}
           <nav className={none ?"scrolled":"nav"} ref={NavRef}>
        { selected < 4 &&<>
         
@@ -505,7 +505,7 @@ function Back(){
                         });
                         setGames2(updatedGames);
                         setGames(updatedGames);
-                        localStorage.setItem("saved2",JSON.stringify(updatedGames))
+                        localStorage.setItem("saved3",JSON.stringify(updatedGames))
                       }
                       }>
                         {game.wishlist ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}
@@ -532,7 +532,7 @@ function Back(){
             <li onClick={() => setSelected(0)}><a>Home</a></li>
             <li onClick={() => setSelected(4)}><a>Games</a></li>
             <li onClick={() => setSelected(3)}><a>Wishlist</a></li>
-            <li onClick={() => setSelected(2)}><a href="#">Cart</a></li>
+            <li onClick={() => setSelected(2)}><a>Cart</a></li>
           </ul>
         </div>
 
@@ -591,7 +591,7 @@ function Back(){
                         });
                         setGames2(updatedGames);
                         setGames(updatedGames);
-                        localStorage.setItem("saved2",JSON.stringify(updatedGames))
+                        localStorage.setItem("saved3",JSON.stringify(updatedGames))
                       }}>
                         {game.wishlist ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}
                       </button>
@@ -650,7 +650,7 @@ function Back(){
                               });
                               setGames(updatedGames);
                               setGames2(updatedGames);
-                              localStorage.setItem("saved2",JSON.stringify(updatedGames))
+                              localStorage.setItem("saved3",JSON.stringify(updatedGames))
                             }}>
                              <i class="fa-solid fa-heart"></i>
                             </button>
@@ -682,7 +682,7 @@ function Back(){
                         });
                         setGames(updatedGames);
                         setGames2(updatedGames);
-                        localStorage.setItem("saved2",JSON.stringify(updatedGames))
+                        localStorage.setItem("saved3",JSON.stringify(updatedGames))
                       }}>
                         {game.wishlist ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}
                       </button>
@@ -752,7 +752,7 @@ function Back(){
                         setGames2(updatedGames);
                         setGames(updatedGames);
                         setGameWish(!gameWish)
-                        localStorage.setItem("saved2",JSON.stringify(updatedGames))
+                        localStorage.setItem("saved3",JSON.stringify(updatedGames))
                         
                  }}>{gameWish ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}</button>
                  

@@ -355,6 +355,8 @@ hr{
   background: rgba(0, 217, 255, 0.1);
   color: #00d9ff;
   transition: all 0.2s ease;
+  overflow: hidden;
+  text-decoration: none;
 }
 
 .footer-socials a:hover {
