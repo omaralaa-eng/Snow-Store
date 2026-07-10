@@ -831,7 +831,7 @@ hr{
 }
 .Gamename span{
   font-style: italic;
-  background-image: url("background.jpg");
+  background-image: url("/background.jpg");
   background-size: cover;
   background-clip: text;
   color: transparent;
