@@ -288,7 +288,7 @@ function Back1(){
         wishlist: false,
         special: false,
         recommed: true, 
-      }
+      },
   ] )
 const [games2,setGames2] = useState(games)
 const [games3,setGames3] = useState()
@@ -305,8 +305,15 @@ useEffect(() => {
   const storedGames = localStorage.getItem("saved3");
 
   if (storedGames) {
-    setGames(JSON.parse(storedGames));
-    setGames2(JSON.parse(storedGames));
+    const stored = JSON.parse(storedGames);
+    const merged = games.map((game) => {
+      const savedGame = stored.find((g) => g.id === game.id);
+      return savedGame
+        ? { ...game, bought: savedGame.bought, wishlist: savedGame.wishlist }
+        : game;
+    });
+    setGames(merged);
+    setGames2(merged);
   }
 }, []);
 
