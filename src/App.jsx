@@ -10,6 +10,7 @@ function App() {
   const [gameImage,setGameImage] = useState("")
   const [gameWish,setGameWish] = useState(false)
   const [searchValue, setSearchValue] = useState("");
+  const [appeareUk,setAppeareUk] = useState(false)
   const NavRef = useRef(null)
   const serchInputRef = useRef(null);
   const [email,setEmail] = useState("")
@@ -17,6 +18,7 @@ function App() {
   const [steamPass,setSteamPass] = useState("")
   const [whatsApp,setWhatsApp] = useState("")
   const [payNo,setPayNo] = useState("")
+  const [rigon,setRigon] = useState("India")
   const [Sent,setSent] = useState(false)
   const [error,setError] = useState()
   const [next,setNext] = useState(0)
@@ -61,6 +63,66 @@ function App() {
     setGameWish(wish)
     setBuy(true);
   }
+
+  function Rigoni(){
+   return games.filter((g)=> g.name === gameName).map((g)=>g.price)
+  }
+
+   function Rigonu(){
+   const p =  games.filter((g)=> g.name === gameName).map((g)=>g.priceU);
+   return p
+   }
+
+   useEffect(() => {
+      const game = games.find((g) => g.name === gameName);
+
+      if (game?.priceU) {
+        setAppeareUk(true);
+      } else {
+        setAppeareUk(false);
+      }
+}, [gameName]);
+
+   function Rigone(){
+   return games.filter((g)=> g.name === gameName).map((g)=>g.priceE)
+  }
+
+   function RigonT(){
+   return games.filter((g)=> g.name === gameName).map((g)=>g.priceT)
+  }
+
+  function ClickI(){
+    setGamePrice(games.filter((g)=> g.name === gameName).map((g)=>g.price))
+    setRigon("India")
+  }
+
+  function ClickU(){
+    setGamePrice(games.filter((g)=> g.name === gameName).map((g)=>g.priceU))
+     setRigon("ukraine")
+  }
+
+  function ClickE(){
+    setGamePrice(games.filter((g)=> g.name === gameName).map((g)=>g.priceE))
+     setRigon("Egypt")
+  }
+
+  function ClickT(){
+    setGamePrice(games.filter((g)=> g.name === gameName).map((g)=>g.priceT))
+     setRigon("turkey")
+  }
+  
+function India(){
+  return <img src="https://static.vecteezy.com/system/resources/previews/011/571/519/original/circle-flag-of-india-free-png.png" alt="India logo" className='log'/> 
+}
+function Ukra(){
+  return  <img src="https://www.freepnglogos.com/uploads/ukraine-flag-png/circle-flag-of-ukraine-png-download-0.png" alt="Ukrania logo" className='log'/>
+}
+function Egy(){
+  return  <img src="https://www.pngmart.com/files/15/Egypt-Flag-Download-PNG-Image.png" alt="Egypt logo" className='log'/>
+}
+function Turk(){
+  return  <img src=" https://static.vecteezy.com/system/resources/previews/069/410/876/large_2x/turkey-flag-round-icon-turkish-flag-circle-free-png.png" alt="Turky logo" className='log'/>
+}
 
 function Next(){
   mainGames.current.scrollLeft += 400;
@@ -131,7 +193,10 @@ function Back1(){
         },
     { id: 6,
        name: 'Assassins Creed Valhalla',
-      price: 750,
+      price: 2200,
+        priceU: "",
+        priceE: 3300,
+        priceT: 3300,
       image: 'https://wallpaperaccess.com/full/2702188.jpg',
       bought: false,
       wishlist: false,
@@ -268,9 +333,9 @@ function Back1(){
         id: 17,
         name: "Call of Duty: Modern Warfare II",
         price: 3630,
-         priceU: 3740,
-      priceE: 4840,
-      priceT: 4840,
+        priceU: 3740,
+        priceE: 4840,
+        priceT: 4840,
         image: "https://tse3.mm.bing.net/th/id/OIP.NXILAogM1nnMSkI-1ennKwHaEK?pid=Api&h=220&P=0",
         bought: false,
         wishlist: false,
@@ -280,7 +345,10 @@ function Back1(){
       {
         id: 18,
         name: "Assassin's Creed Mirage",
-        price: 750,
+        price: 1815,
+        priceU: "",
+        priceE: 2750,
+        priceT: 2750,
         image: "https://wallpapercave.com/wp/wp11468139.jpg",
         bought: false,
         wishlist: false,
@@ -290,7 +358,10 @@ function Back1(){
       {
         id: 19,
         name: "Tom Clancy's Rainbow Six Siege",
-        price: 500,
+        price: 1045,
+         priceU: 935,
+        priceE: 1100,
+        priceT: 1100,
         image: "https://wallpapercave.com/wp/wp3830478.jpg",
         bought: false,
         wishlist: false,
@@ -300,7 +371,10 @@ function Back1(){
       {
         id: 20,
         name: "ARC Raiders",
-        price: 1600,
+        price: 1870,
+         priceU: 2200,
+        priceE: 2750,
+        priceT: 2750,
         image: "https://4kwallpapers.com/images/wallpapers/arc-raiders-key-art-2560x1440-19855.jpg",
         bought: false,
         wishlist: false,
@@ -311,6 +385,9 @@ function Back1(){
         id: 21,
         name: "UNCHARTED: Legacy of Thieves Collection",
         price: 850,
+         priceU: 2695,
+      priceE: 4840,
+      priceT: 4840,
         image: "https://wallpapercave.com/wp/wp10511331.jpg",
         bought: false,
         wishlist: false,
@@ -321,6 +398,9 @@ function Back1(){
         id: 22,
         name: "DOOM: The Dark Ages",
         price: 2200,
+         priceU: 2695,
+      priceE: 4840,
+      priceT: 4840,
         image: "https://4kwallpapers.com/images/wallpapers/doom-the-dark-ages-3840x2160-20800.jpg",
         bought: false,
         wishlist: false,
@@ -330,7 +410,10 @@ function Back1(){
       {
         id: 23,
         name: "DETROIT",
-        price: 700,
+        price: 1485,
+         priceU: 2090,
+        priceE: 2200,
+        priceT: 220,
         image: "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/09/detroit-become-human.jpg",
         bought: false,
         wishlist: false,
@@ -437,6 +520,8 @@ function Hand(){
         whatsApp: whatsApp,
         payNo: payNo,
         gameName: gameName,
+        gamePrice: gamePrice,
+        rigon: rigon,
       },
       "HaYR2qNVjiwhpY3Df"
     ).then(() => {
@@ -790,9 +875,19 @@ function Back(){
            
           {next === 0 && <>
             <div className="buyPage">
+
               <img src={gameImage} alt={gameName} />
                 <h1 className='Gamename g1' > <span>{gameName}</span></h1>
                 <h1 className='Gamename2 g2' > <span> {gamePrice} EGP</span></h1>
+            
+            <div className="flex">
+
+             <div>  <India/><button className='rigon' onClick={ClickI}><Rigoni/></button> </div> 
+             <div>  {appeareUk && <> <Ukra/><button  className='rigon'  onClick={ClickU}><Rigonu/></button> </>} </div>
+               <div> <Egy/><button   className='rigon'   onClick={ClickE}><Rigone/></button> </div>
+               <div> <Turk/><button  className='rigon'  onClick={ClickT}><RigonT/></button> </div>
+                </div>
+
                 <button type='button' onClick={() => setNext(prev => prev += 1)} className='btnNext'>Next</button>
 
                   <button  className="btnWishlist2" onClick={(e) => {
@@ -818,11 +913,12 @@ function Back(){
 
 
             {next === 1 &&<>
+
+             <div className='page2'>
              <img src="/Qrcode.jpg" alt="Qr code" />
-            <form>
               <h1>If you paied click next</h1>
               <button type='button' onClick={() => setNext(prev => prev += 1)}>Next</button>
-              </form></>}
+              </div></>}
               {next === 2 &&
                     <form>
                       <h1>Please fill the form</h1>
