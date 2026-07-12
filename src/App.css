@@ -111,7 +111,7 @@ body::selection{
   width: 90%;
   height: 400px;
   display: flex;
-  border-radius: 20px;
+  border-radius: 12px;
   position: relative;
   margin: auto;
    overflow: hidden;
@@ -125,7 +125,7 @@ body::selection{
   img{
    width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 12px;
     position: absolute;
     z-index: 0;
     overflow: hidden;
@@ -498,8 +498,8 @@ hr{
     box-shadow: 0 0 5px 2px rgb(13, 13, 226);
 }
 .contact{
-  padding-left: 15px;
-  padding-top: 15px;
+  text-align: center;
+  padding-top: 25px;
 }
 .game{
   width: 320px;
@@ -511,6 +511,7 @@ hr{
   white-space: nowrap;
   animation: nav 1s;
   transition: .2s;
+  overflow: hidden;
   img{
     width: 100%;
     height: 100%;
@@ -545,6 +546,27 @@ hr{
  i{
   overflow: hidden;
  }
+}
+.sale{
+  position:absolute;
+  bottom:14px;
+  left:-28px;
+  width:100px;
+  text-align:center;
+  background:#ff3b30;
+  color:white;
+  transform:rotate(45deg);
+  font-weight:bold;
+  z-index: 1;
+  scale: 1.2;
+  box-shadow: 0 0 5px 5px rgb(255, 111, 0);
+}
+.salePrice{
+  text-decoration: line-through;
+  color: #8a94a6;
+  text-shadow: none;
+  padding-left: 10px;
+  font-size: .9rem;
 }
 .game2{
    /* width: 180px; */
@@ -805,6 +827,9 @@ hr{
     transform: translateX(-30%);
     display: flex;
     flex-wrap: wrap;
+    div{
+      overflow: hidden;
+    }
 }
  #BackI{
     position: fixed;
@@ -899,6 +924,9 @@ hr{
   top: 10px;
   margin-right: 10px;
 }
+#sel{
+  border: 2px solid #00d9ff;
+}
 .btnWishlist2{   
     position: absolute;
     bottom: 20px;
@@ -924,6 +952,34 @@ hr{
 }
 .g2{
   animation: tran1 1.5s 1s forwards ease-in-out;
+}
+.payQr{
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  translate: -50% 0;
+  min-width: 250px;
+  height: 40px;
+  background-color: #F8FBF8;
+  color: black;
+  display: flex;
+  /* padding: 0 15px; */
+  border-radius: 5px;
+  div{
+    width: 50%;
+    font-size: 1rem;
+    font-weight: 600;
+    font-style: italic;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
+#qrselected{
+  background-color: #00d9ff;
+  color: white;
 }
 .message{
   width: 40%;
@@ -1086,6 +1142,9 @@ hr{
       h3::-webkit-scrollbar{
         display: none;
       }
+      p{
+        padding: 2px;
+      }
     }
     .btnWishlist{
       right: 0;
@@ -1153,13 +1212,14 @@ hr{
     }
     .Gamename{
       position: relative;
-      left: 15px;
+      left: 10px;
       top: 5px;
     }
     .Gamename2{
      position: relative;
-     left: 15px;
+     left: 10px;
      top: 5px;
+      overflow: hidden;
     }
     .flex{
       left: 0;
@@ -1184,6 +1244,9 @@ hr{
       padding: 15px;
       scale: .8;
       font-size: 1.8rem;
+    }
+    .salePrice{
+      padding: 2px;
     }
 }
 @media (min-width:1101px) and (max-width:1245px){

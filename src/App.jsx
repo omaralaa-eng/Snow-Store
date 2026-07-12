@@ -5,6 +5,7 @@ import './App.css'
 function App() {
   const [selected, setSelected] = useState(0)
   const [buy,setBuy] = useState(false)
+  const [qr,setQr] = useState(0)
   const [gameName,setGameName] = useState("")
   const [gamePrice,setGamePrice] = useState()
   const [gameImage,setGameImage] = useState("")
@@ -98,7 +99,7 @@ function App() {
 
   function ClickU(){
     setGamePrice(games.filter((g)=> g.name === gameName).map((g)=>g.priceU))
-     setRigon("ukraine")
+     setRigon("Ukraine")
   }
 
   function ClickE(){
@@ -108,7 +109,7 @@ function App() {
 
   function ClickT(){
     setGamePrice(games.filter((g)=> g.name === gameName).map((g)=>g.priceT))
-     setRigon("turkey")
+     setRigon("Brazil")
   }
   
 function India(){
@@ -120,8 +121,8 @@ function Ukra(){
 function Egy(){
   return  <img src="https://www.pngmart.com/files/15/Egypt-Flag-Download-PNG-Image.png" alt="Egypt logo" className='log'/>
 }
-function Turk(){
-  return  <img src=" https://static.vecteezy.com/system/resources/previews/069/410/876/large_2x/turkey-flag-round-icon-turkish-flag-circle-free-png.png" alt="Turky logo" className='log'/>
+function Brazil(){
+  return  <img src="https://www.citypng.com/public/uploads/preview/circular-round-brazil-flag-icon-transparent-png-735811695834286ym9xrpgtef.png" alt="Brazil logo" className='log'/>
 }
 
 function Next(){
@@ -136,7 +137,11 @@ function Back1(){
       price: 1815,
       priceU: 1925,
       priceE: 2090,
-      priceT: 2090, 
+      priceT: 2365, 
+      sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
       image: 'https://wallpapercave.com/wp/wp12116720.jpg',
       bought: false,
       wishlist: false,
@@ -148,7 +153,11 @@ function Back1(){
       price: 550,
       priceU: 2695,
       priceE: 4840,
-      priceT: 4840,
+      priceT: 1760,
+      sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
       image: 'https://wallpapercave.com/wp/wp15596323.jpg',
       bought: false,
       wishlist: false,
@@ -160,7 +169,11 @@ function Back1(){
        price: 2365,
        priceU: 1925,
        priceE: 3465,
-       priceT: 3465,
+       priceT: 2750,
+        sale: "",
+        saleU: "",
+        saleE: "",
+        saleT: "",
        image: 'https://wallpaperaccess.com/full/707061.jpg',
        bought: false,
        wishlist: false,
@@ -173,6 +186,10 @@ function Back1(){
       priceU: 2695,
       priceE: 4840,
       priceT: 4840,
+       sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
       image: 'https://wallpaperaccess.com/full/40632.jpg',
       bought: false,
       wishlist: false,
@@ -185,6 +202,10 @@ function Back1(){
       priceU: 1430,
       priceE: 1375,
       priceT: 1375,
+       sale: "2695",
+      saleU: "3190",
+      saleE: "3135",
+      saleT: "3135",
       image: 'https://4kwallpapers.com/images/wallpapers/grand-theft-auto-v-2880x1800-10738.jpg',
       bought: false,
       wishlist: false,
@@ -196,7 +217,11 @@ function Back1(){
       price: 2200,
         priceU: "",
         priceE: 3300,
-        priceT: 3300,
+        priceT: 2750,
+         sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
       image: 'https://wallpaperaccess.com/full/2702188.jpg',
       bought: false,
       wishlist: false,
@@ -204,11 +229,15 @@ function Back1(){
       recommed: true, 
         },
     { id: 7,
-       name: 'The Last of Us',
-      price: 2860,
-      priceU: 2695,
-      priceE: 4125,
-      priceT: 4125,
+       name: 'The Last of Us 2',
+      price: 2365,
+      priceU: 2365,
+      priceE: 3465,
+      priceT: 2750,
+       sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
       image: 'https://wallpapercave.com/wp/wp6448323.png',
       bought: false,
       wishlist: false,
@@ -221,6 +250,10 @@ function Back1(){
       priceU: 2695,
       priceE: 4840,
       priceT: 4840,
+       sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
       image: 'https://getwallpapers.com/wallpaper/full/3/f/7/789279-new-horizon-zero-dawn-wallpapers-3840x2160-smartphone.jpg',
       bought: false,
       wishlist: false,
@@ -232,7 +265,11 @@ function Back1(){
       price: 2530,
       priceU: 1925,
       priceE: 2255,
-      priceT: 2255,
+      priceT: 3465,
+       sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
       image: 'https://wallpaperaccess.com/full/6070334.jpg',
       bought: false,
       wishlist: false,
@@ -244,7 +281,11 @@ function Back1(){
        price: 2200,
       priceU: 2200,
       priceE: 3135,
-      priceT: 3135,
+      priceT: 2750,
+       sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
        image: 'https://wallpaperaccess.com/full/1096894.jpg',
        bought: false,
        wishlist: false,
@@ -257,7 +298,11 @@ function Back1(){
         price: 2585,
          priceU: 2860,
       priceE: 2750,
-      priceT: 2750,
+      priceT: 3795,
+       sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
         image: 'https://4kwallpapers.com/images/wallpapers/elden-ring-pc-games-playstation-4-playstation-5-xbox-one-1920x1080-7712.jpg',
         bought: false,
         wishlist: false,
@@ -271,6 +316,10 @@ function Back1(){
          priceU: 1045,
         priceE: 1045,
         priceT: 1045,
+         sale: "3630",
+      saleU: "4125",
+      saleE: "4125",
+      saleT: "4125",
         image: 'https://wallpapercave.com/wp/wp3660596.jpg',
         bought: false,
         wishlist: false,
@@ -284,6 +333,10 @@ function Back1(){
         priceU: 2695,
         priceE: 4840,
         priceT: 4840,
+         sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
         image: 'https://4kwallpapers.com/images/wallpapers/black-myth-wukong-3840x2160-17948.jpeg',
         bought: false,
         wishlist: false,
@@ -296,7 +349,11 @@ function Back1(){
         price: 1485,
         priceU: 990,
         priceE: 2035,
-        priceT: 2035,
+        priceT: 1815,
+         sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
         image: 'https://www.senses.se/wp-content/uploads/2025/10/ready-or-not-finish-cl-250331.jpg',
         bought: false,
         wishlist: false,
@@ -309,7 +366,11 @@ function Back1(){
         price: 2200,
          priceU: 2365,
       priceE: 2420,
-      priceT: 2420,
+      priceT: 2750,
+       sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
         image: 'https://image.api.playstation.com/vulcan/ap/rnd/202412/1011/2f394381118d051422d9d8da9e9ea7f9bc300c6b746483c6.jpg',
         bought: false,
         wishlist: false,
@@ -322,7 +383,11 @@ function Back1(){
         price: 2860,
          priceU: 2200,
       priceE: 4125,
-      priceT: 4125,
+      priceT: 3465,
+       sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
         image: 'https://wallpapercave.com/wp/wp7593605.jpg',
         bought: false,
         wishlist: false,
@@ -335,7 +400,11 @@ function Back1(){
         price: 3630,
         priceU: 3740,
         priceE: 4840,
-        priceT: 4840,
+        priceT: 4400,
+         sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
         image: "https://tse3.mm.bing.net/th/id/OIP.NXILAogM1nnMSkI-1ennKwHaEK?pid=Api&h=220&P=0",
         bought: false,
         wishlist: false,
@@ -348,7 +417,11 @@ function Back1(){
         price: 1815,
         priceU: "",
         priceE: 2750,
-        priceT: 2750,
+        priceT: 2915,
+         sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
         image: "https://wallpapercave.com/wp/wp11468139.jpg",
         bought: false,
         wishlist: false,
@@ -361,7 +434,11 @@ function Back1(){
         price: 1045,
          priceU: 935,
         priceE: 1100,
-        priceT: 1100,
+        priceT: 1375,
+         sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
         image: "https://wallpapercave.com/wp/wp3830478.jpg",
         bought: false,
         wishlist: false,
@@ -374,7 +451,11 @@ function Back1(){
         price: 1870,
          priceU: 2200,
         priceE: 2750,
-        priceT: 2750,
+        priceT: 2365,
+         sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
         image: "https://4kwallpapers.com/images/wallpapers/arc-raiders-key-art-2560x1440-19855.jpg",
         bought: false,
         wishlist: false,
@@ -388,6 +469,10 @@ function Back1(){
          priceU: 2695,
       priceE: 4840,
       priceT: 4840,
+       sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
         image: "https://wallpapercave.com/wp/wp10511331.jpg",
         bought: false,
         wishlist: false,
@@ -401,6 +486,10 @@ function Back1(){
          priceU: 2695,
       priceE: 4840,
       priceT: 4840,
+       sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
         image: "https://4kwallpapers.com/images/wallpapers/doom-the-dark-ages-3840x2160-20800.jpg",
         bought: false,
         wishlist: false,
@@ -413,7 +502,11 @@ function Back1(){
         price: 1485,
          priceU: 2090,
         priceE: 2200,
-        priceT: 220,
+        priceT: 2750,
+         sale: "",
+      saleU: "",
+      saleE: "",
+      saleT: "",
         image: "https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/09/detroit-become-human.jpg",
         bought: false,
         wishlist: false,
@@ -423,6 +516,7 @@ function Back1(){
   ] )
 const [games2,setGames2] = useState(games)
 const [games3,setGames3] = useState()
+
   function Search() {
     setSearchValue(serchInputRef.current.value);
     const searchInput = serchInputRef.current.value.toLowerCase();
@@ -554,6 +648,7 @@ function Hand(){
 function Back(){
   setBuy(false)
   setNext(0)
+  setRigon("India")
 }
   return (
     <>
@@ -619,20 +714,21 @@ function Back(){
                  </div>
                        
                   <hr style={{margin:"80px auto"}}/>
-                  <h1>Recommneded Games:</h1>
+                  <h1 style={{textAlign:"center"}}>Recommneded Games:</h1>
                   <div className='mainGames' ref={mainGames}>
                    {games.filter((g) => g.recommed).map((game) => (
 
                      <div className="game" style={{width:"250px",margin:"0"}} key={game.id} onClick={() => goToBuy(game.name,game.price,game.image,game.wishlist)}>
                       <img src={game.image} alt={game.name} />
                       <h3 className={game.name.length > 18  ? "scroll2" : ""} >{game.name}</h3>
-                      <p className={game.name.length > 18  ?"pLength":""}>{game.price} EGP</p>
+                      <p className={game.name.length > 18  ?"pLength":""}>{game.price} EGP {game.sale && <span className='salePrice'>{game.sale}EGP</span>}</p>
+                     {game.sale && <span className='sale'>Sale</span> }
 
-                      {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>}
+                      {/* {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>} */}
                      
-                      <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>
-                        {game.bought ? 'Bought' : 'Buy'}
-                      </button>
+                     {game.bought && <button className="bought" disabled={game.bought}>
+                        Bought
+                      </button>}
 
                       <button className="btnWishlist" onClick={(e) => {
                         e.stopPropagation()
@@ -714,12 +810,13 @@ function Back(){
                     <div className="game" key={game.id} onClick={() => goToBuy(game.name,game.price,game.image,game.wishlist)}>
                       <img src={game.image} alt={game.name} />
                       <h3 className={game.name.length > 23  ? "scroll" : ""}>{game.name}</h3>
-                      <p className={game.name.length > 23  ?"pLength":""}>{game.price} EGP</p>
+                      <p className={game.name.length > 18  ?"pLength":""}>{game.price} EGP {game.sale && <span className='salePrice'>{game.sale}EGP</span>}</p>
+                     {game.sale && <span className='sale'>Sale</span> }
 
-                      {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>}
-                      <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>
-                        {game.bought ? 'Bought' : 'Buy'}
-                      </button>
+                      {/* {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>} */}
+                      {game.bought && <button className="bought" disabled={game.bought}>
+                        Bought
+                      </button>}
                       <button className="btnWishlist" onClick={(e) => {
                           e.stopPropagation()
                         const updatedGames = games.map((g) => {
@@ -751,7 +848,8 @@ function Back(){
                           <div className="game" key={game.id} >
                             <img src={game.image} alt={game.name} />
                             <h3 className={game.name.length > 23  ? "scroll" : ""}>{game.name}</h3>
-                            <p className={game.name.length > 23  ?"pLength":""}>{game.price} EGP</p>
+                            <p className={game.name.length > 18  ?"pLength":""}>{game.price} EGP {game.sale && <span className='salePrice'>{game.sale}EGP</span>}</p>
+                     {game.sale && <span className='sale'>Sale</span> }
 
 
                             <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought}>
@@ -772,13 +870,14 @@ function Back(){
                           <div className="game" key={game.id} onClick={() => goToBuy(game.name,game.price,game.image,game.wishlist)}>
                             <img src={game.image} alt={game.name} />
                             <h3 className={game.name.length > 23  ? "scroll" : ""}>{game.name}</h3>
-                            <p className={game.name.length > 23  ?"pLength":""}>{game.price} EGP</p>
+                             <p className={game.name.length > 18  ?"pLength":""}>{game.price} EGP {game.sale && <span className='salePrice'>{game.sale}EGP</span>}</p>
+                     {game.sale && <span className='sale'>Sale</span> }
 
-                            {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>}
+                            {/* {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>} */}
 
-                             <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>
-                                {game.bought ? 'Bought' : 'Buy'}
-                              </button>
+                            {game.bought && <button className="bought" disabled={game.bought}>
+                               Bought
+                            </button>}
 
                             <button className="btnWishlist" onClick={(e) => {
                                 e.stopPropagation()
@@ -806,11 +905,15 @@ function Back(){
                     <div className="game" key={game.id} onClick={() => goToBuy(game.name,game.price,game.image,game.wishlist)}>
                       <img src={game.image} alt={game.name} />
                       <h3 className={game.name.length > 23 ? "scroll" : ""}>{game.name}</h3>
-                      <p className={game.name.length > 23 ?"pLength":""}>{game.price} EGP</p>
-                      {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>}
-                      <button className={game.bought?"bought" :"btnBuy"} disabled={game.bought} onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>
-                        {game.bought ? 'Bought' : 'Buy'}
-                      </button>
+                       <p className={game.name.length > 18  ?"pLength":""}>{game.price} EGP {game.sale && <span className='salePrice'>{game.sale}EGP</span>}</p>
+                     {game.sale && <span className='sale'>Sale</span> }
+
+                      {/* {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>} */}
+
+                    {game.bought && <button className="bought" disabled={game.bought}>
+                        Bought
+                      </button>}
+
                       <button className="btnWishlist" onClick={(e) => {
                           e.stopPropagation()
                         const updatedGames = games.map((g) => {
@@ -878,14 +981,18 @@ function Back(){
 
               <img src={gameImage} alt={gameName} />
                 <h1 className='Gamename g1' > <span>{gameName}</span></h1>
-                <h1 className='Gamename2 g2' > <span> {gamePrice} EGP</span></h1>
+                <h1 className='Gamename2 g2' > <span> {gamePrice} EGP</span> <span className='salePrice'>{rigon === "India"? games.find((g) => g.name === gameName).sale:
+                rigon === "Ukraine" ? games.find((g) => g.name === gameName).saleU:
+                rigon === "Egypt" ? games.find((g) => g.name === gameName).saleE:
+                rigon === "Brazil" ? games.find((g) => g.name === gameName).saleT :""
+                }</span></h1>
             
             <div className="flex">
 
-             <div>  <India/><button className='rigon' onClick={ClickI}><Rigoni/></button> </div> 
-             <div>  {appeareUk && <> <Ukra/><button  className='rigon'  onClick={ClickU}><Rigonu/></button> </>} </div>
-               <div> <Egy/><button   className='rigon'   onClick={ClickE}><Rigone/></button> </div>
-               <div> <Turk/><button  className='rigon'  onClick={ClickT}><RigonT/></button> </div>
+             <div>  <India/><button className='rigon' id={rigon === "India"?"sel":""} onClick={ClickI}><Rigoni/></button> </div> 
+             <div>  {appeareUk && <> <Ukra/><button id={rigon === "Ukraine"?"sel":""} className='rigon'  onClick={ClickU}><Rigonu/></button> </>} </div>
+               <div> <Egy/><button   className='rigon' id={rigon === "Egypt"?"sel":""}  onClick={ClickE}><Rigone/></button> </div>
+               <div> <Brazil/><button  className='rigon' id={rigon === "Brazil"?"sel":""} onClick={ClickT}><RigonT/></button> </div>
                 </div>
 
                 <button type='button' onClick={() => setNext(prev => prev += 1)} className='btnNext'>Next</button>
@@ -915,7 +1022,11 @@ function Back(){
             {next === 1 &&<>
 
              <div className='page2'>
-             <img src="/Qrcode.jpg" alt="Qr code" />
+              <nav className="payQr">
+                <div className="" onClick={() => setQr(0)} id={qr === 0?"qrselected":""}>Insta Pay</div>
+                <div className="" onClick={() => setQr(1)} id={qr === 1?"qrselected":""}>Vodafon cash</div>
+              </nav>
+             <img src={qr === 0? "/Qrcode.jpg" :"/Vodafon.jpg"} alt="Qr code" />
               <h1>If you paied click next</h1>
               <button type='button' onClick={() => setNext(prev => prev += 1)}>Next</button>
               </div></>}
