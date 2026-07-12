@@ -633,6 +633,7 @@ function Hand(){
       setLoading(false)
       setBuy(false)
       setNext(0)
+      setRigon("India")
       setTimeout(()=>{
         setSent(false)
       },5000)
