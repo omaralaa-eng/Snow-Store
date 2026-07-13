@@ -4,6 +4,7 @@ import './App.css'
 
 function App() {
   const [selected, setSelected] = useState(0)
+  const [open, setOpen] = useState(false);
   const [buy,setBuy] = useState(false)
   const [qr,setQr] = useState(0)
   const [gameName,setGameName] = useState("")
@@ -63,6 +64,7 @@ function App() {
     setGameImage(image)
     setGameWish(wish)
     setBuy(true);
+    setRigon("India")
   }
 
   function Rigoni(){
@@ -125,11 +127,36 @@ function Brazil(){
   return  <img src="https://www.citypng.com/public/uploads/preview/circular-round-brazil-flag-icon-transparent-png-735811695834286ym9xrpgtef.png" alt="Brazil logo" className='log'/>
 }
 
+function Sale1(){
+  const x = rigon === "India"? games.find((g) => g.name === gameName).sale:
+        rigon === "Ukraine" ? games.find((g) => g.name === gameName).saleU:
+        rigon === "Egypt" ? games.find((g) => g.name === gameName).saleE:
+        rigon === "Brazil" ? games.find((g) => g.name === gameName).saleT :"";
+     return x;           
+}
+
 function Next(){
   mainGames.current.scrollLeft += 400;
 }
 function Back1(){
   mainGames.current.scrollLeft -= 400;
+}
+function SortC(e){
+  e.stopPropagation()
+ const sortedGames = [...games].sort((a, b) => a.price - b.price);
+  setGames2(sortedGames)
+}
+
+function SortH(e){
+  e.stopPropagation()
+  const sortedGames = [...games].sort((a, b) => b.price - a.price);
+  setGames2(sortedGames)
+}
+
+function SortS(e){
+  e.stopPropagation()
+  const sortedGames = games.filter((g) => g.sale)
+  setGames2(sortedGames)
 }
   const [games,setGames] = useState([
     { id: 1,
@@ -654,7 +681,7 @@ function Back(){
   return (
     <>
        {!buy &&
-     <main className='main'>
+     <main className='main' onClick={() => setOpen(false)}>
     
        <header className='header' id='home'>
          <h1>Snow Store</h1>
@@ -722,7 +749,7 @@ function Back(){
                      <div className="game" style={{width:"250px",margin:"0"}} key={game.id} onClick={() => goToBuy(game.name,game.price,game.image,game.wishlist)}>
                       <img src={game.image} alt={game.name} />
                       <h3 className={game.name.length > 18  ? "scroll2" : ""} >{game.name}</h3>
-                      <p className={game.name.length > 18  ?"pLength":""}>{game.price} EGP {game.sale && <span className='salePrice'>{game.sale}EGP</span>}</p>
+                      <p className={game.name.length > 18  ?"pLength":""}>{game.price.toLocaleString()} EGP {game.sale && <span className='salePrice'>{game.sale.toLocaleString()}EGP</span>}</p>
                      {game.sale && <span className='sale'>Sale</span> }
 
                       {/* {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>} */}
@@ -803,15 +830,21 @@ function Back(){
                     <form>
                       <input className="search-input" type="search" placeholder="Search for a game..." onChange={Search}  ref={serchInputRef}/>
                       <i class="fa-solid fa-magnifying-glass" id="search-icon" onClick={Search}></i>
-                      {/* <i class="fa-solid fa-arrow-down-wide-short" id="sort-icon"></i> */}
+                      <i class="fa-solid fa-arrow-down-wide-short" id="sort-icon"  onClick={(e) => {e.stopPropagation();setOpen(!open)}}></i>
                     </form>
-                    <section className="sec">
-                      {searchValue === "" ? <p className="search-p">Please enter a game name to search.</p> : <>
+                      {open && (
+                          <div className="sort-menu">
+                            <p onClick={SortC}>Cheapest First</p>
+                            <p onClick={SortH}>Highest Price</p>
+                            <p onClick={SortS}>Sale</p>
+                      </div>)}
+                    <section className="sec" onClick={(e) => e.stopPropagation()}>
+                      { !open && !searchValue ? <p className="search-p">Please enter a game name to search.</p> : <>
                      {games2.map((game) => (
-                    <div className="game" key={game.id} onClick={() => goToBuy(game.name,game.price,game.image,game.wishlist)}>
+                    <div className="game" key={game.id} onClick={(e) => {e.stopPropagation();goToBuy(game.name,game.price,game.image,game.wishlist)}}>
                       <img src={game.image} alt={game.name} />
                       <h3 className={game.name.length > 23  ? "scroll" : ""}>{game.name}</h3>
-                      <p className={game.name.length > 18  ?"pLength":""}>{game.price} EGP {game.sale && <span className='salePrice'>{game.sale}EGP</span>}</p>
+                      <p className={game.name.length > 18  ?"pLength":""}>{game.price.toLocaleString()} EGP {game.sale && <span className='salePrice'>{game.sale.toLocaleString()}EGP</span>}</p>
                      {game.sale && <span className='sale'>Sale</span> }
 
                       {/* {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>} */}
@@ -834,7 +867,9 @@ function Back(){
                         {game.wishlist ? <i class="fa-solid fa-heart"></i> : <i class="fa-regular fa-heart"></i>}
                       </button>
                     </div>
-                  ))}</>}
+                  ))
+                  }</>
+                  }
                   </section>
                   </section>
                  </>}
@@ -849,7 +884,7 @@ function Back(){
                           <div className="game" key={game.id} >
                             <img src={game.image} alt={game.name} />
                             <h3 className={game.name.length > 23  ? "scroll" : ""}>{game.name}</h3>
-                            <p className={game.name.length > 18  ?"pLength":""}>{game.price} EGP {game.sale && <span className='salePrice'>{game.sale}EGP</span>}</p>
+                            <p className={game.name.length > 18  ?"pLength":""}>{game.price.toLocaleString()} EGP {game.sale && <span className='salePrice'>{game.sale.toLocaleString()}EGP</span>}</p>
                      {game.sale && <span className='sale'>Sale</span> }
 
 
@@ -871,7 +906,7 @@ function Back(){
                           <div className="game" key={game.id} onClick={() => goToBuy(game.name,game.price,game.image,game.wishlist)}>
                             <img src={game.image} alt={game.name} />
                             <h3 className={game.name.length > 23  ? "scroll" : ""}>{game.name}</h3>
-                             <p className={game.name.length > 18  ?"pLength":""}>{game.price} EGP {game.sale && <span className='salePrice'>{game.sale}EGP</span>}</p>
+                             <p className={game.name.length > 18  ?"pLength":""}>{game.price.toLocaleString()} EGP {game.sale && <span className='salePrice'>{game.sale.toLocaleString()}EGP</span>}</p>
                      {game.sale && <span className='sale'>Sale</span> }
 
                             {/* {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>} */}
@@ -906,7 +941,7 @@ function Back(){
                     <div className="game" key={game.id} onClick={() => goToBuy(game.name,game.price,game.image,game.wishlist)}>
                       <img src={game.image} alt={game.name} />
                       <h3 className={game.name.length > 23 ? "scroll" : ""}>{game.name}</h3>
-                       <p className={game.name.length > 18  ?"pLength":""}>{game.price} EGP {game.sale && <span className='salePrice'>{game.sale}EGP</span>}</p>
+                       <p className={game.name.length > 18  ?"pLength":""}>{game.price.toLocaleString()} EGP {game.sale && <span className='salePrice'>{game.sale.toLocaleString()}EGP</span>}</p>
                      {game.sale && <span className='sale'>Sale</span> }
 
                       {/* {game.bought && <button className='btnBuy' onClick={() => goToBuy(game.name, game.price,game.image,game.wishlist)}>Buy again</button>} */}
@@ -982,11 +1017,7 @@ function Back(){
 
               <img src={gameImage} alt={gameName} />
                 <h1 className='Gamename g1' > <span>{gameName}</span></h1>
-                <h1 className='Gamename2 g2' > <span> {gamePrice} EGP</span> <span className='salePrice'>{rigon === "India"? games.find((g) => g.name === gameName).sale:
-                rigon === "Ukraine" ? games.find((g) => g.name === gameName).saleU:
-                rigon === "Egypt" ? games.find((g) => g.name === gameName).saleE:
-                rigon === "Brazil" ? games.find((g) => g.name === gameName).saleT :""
-                }</span></h1>
+                <h1 className='Gamename2 g2' > <span> {gamePrice.toLocaleString()} EGP</span> <span className='salePrice'><Sale1/></span></h1>
             
             <div className="flex">
 
